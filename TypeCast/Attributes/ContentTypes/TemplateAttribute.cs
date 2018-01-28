@@ -48,7 +48,7 @@ namespace TypeCast.Attributes
             }
             if (TemplateAlias == null)
             {
-                TemplateAlias = docAttr.Alias;
+                TemplateAlias = docAttr.Alias.ToPascalCase();
             }
             if (TemplateName == null)
             {
