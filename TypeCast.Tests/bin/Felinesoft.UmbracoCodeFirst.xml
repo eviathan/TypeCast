@@ -1,0 +1,2575 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Felinesoft.UmbracoCodeFirst</name>
+    </assembly>
+    <members>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.MemberTypeAttribute.#ctor(System.String,System.String,System.String,System.String,Felinesoft.UmbracoCodeFirst.Attributes.UmbracoIconColor)">
+            <summary>
+            Specifies that a class should be used as a member type by UmbracoCodeFirst.
+            </summary>
+            <param name="memberTypeName">The name of the member type</param>
+            <param name="memberTypeAlias">The alias of the member type</param>
+            <param name="icon">The icon to display in the content tree (see UmbracoCodeFirst.BuiltInIcons for constants representing Umbraco's default icon set)</param>
+            <param name="iconColor">The icon color to show in the tree</param>
+            <param name="description">The Description of the member type</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.MemberTypeAttribute.#ctor(System.String,System.String,System.Object,System.String,System.Boolean,System.Boolean,System.String,Felinesoft.UmbracoCodeFirst.Attributes.UmbracoIconColor)">
+            <summary>
+            <para>Specifies that a class should be used as a member type by UmbracoCodeFirst.</para>
+            <para>
+            THIS CTR is included for compatability with the output of the T4 generators, as it has the same signature as the 
+            other content attribute types. It should not be used. Use the overload with 5 parameters for human-written code.
+            </para>
+            </summary>
+            <param name="memberTypeName">The name of the member type</param>
+            <param name="memberTypeAlias">The alias of the member type</param>
+            <param name="allowedChildren">Should always be null - no inheritance in member types.</param>
+            <param name="icon">The icon to display in the content tree (see UmbracoCodeFirst.BuiltInIcons for constants representing Umbraco's default icon set)</param>
+            <param name="allowAtRoot">Should always be false - no folders in members tree</param>
+            <param name="enableListView">Should always be false - no folder structure in members tree</param>
+            <param name="iconColor">The icon color to show in the tree</param>
+            <param name="description">The Description of the member type</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.MemberTypeAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised any inferred properties (i.e. any not explicitly set by the caller) will still be null.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.MemberTypeAttribute.Initialise(System.Type)">
+            <summary>
+            Initialises the Factory property based on the type to which the attribute is applied.
+            </summary>
+            <param name="decoratedType">The type to which the attribute is applied</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.DocumentPickerPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Specifies that a property should be used as a document property on a document type and that the SingleDocumentPicker should be
+            used in Umbraco to choose the value for this property.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+            <param name="name">Friendly name of the property</param>
+            <param name="alias">Alias of the property</param>
+            <param name="propertyEditorAlias">Alias of your propertyEditor</param>
+            <param name="dataTypeInstanceName">Name of the instance of your property editor, leave empty if you are using a built-in</param>
+            <param name="converterType">Converter class that inherits TypeConverter</param>
+            <param name="mandatory">if set to <c>true</c> [mandatory].</param>
+            <param name="description">The description.</param>
+            <param name="sortOrder">The sort order.</param>
+            <param name="addTabAliasToPropertyAlias">if set to <c>true</c> add's the tab's alias as a suffix to the property alias.</param>
+            <param name="dataType">
+            <para>The name of the data type to use for this property.</para>
+            <para>This property is ignored if the property type is a code-first data type. It should be used
+            when the property type matches the output type of the relevant property editor value converter.
+            The specified data type must already exist in Umbraco, it will not be created or updated when
+            specified using this value.</para>
+            </param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.MediaPickerPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Specifies that a property should be used as a document property on a document type and that the SingleMediaPicker should be
+            used in Umbraco to choose the value for this property.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+            <param name="name">Friendly name of the property</param>
+            <param name="alias">Alias of the property</param>
+            <param name="propertyEditorAlias">Alias of your propertyEditor</param>
+            <param name="dataTypeInstanceName">Name of the instance of your property editor, leave empty if you are using a built-in</param>
+            <param name="converterType">Converter class that inherits TypeConverter</param>
+            <param name="mandatory">if set to <c>true</c> [mandatory].</param>
+            <param name="description">The description.</param>
+            <param name="sortOrder">The sort order.</param>
+            <param name="addTabAliasToPropertyAlias">if set to <c>true</c> add's the tab's alias as a suffix to the property alias.</param>
+            <param name="dataType">
+            <para>The name of the data type to use for this property.</para>
+            <para>This property is ignored if the property type is a code-first data type. It should be used
+            when the property type matches the output type of the relevant property editor value converter.
+            The specified data type must already exist in Umbraco, it will not be created or updated when
+            specified using this value.</para>
+            </param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.BuiltInDataTypeAttribute">
+            <summary>
+            Specifies that the class describes one of the built-in Code-First data types
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.Name">
+            <summary>
+            The name of the content type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.Alias">
+            <summary>
+            The alias of the content type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.AllowedChildren">
+            <summary>
+            An array of code-first document types which are valid children of this document type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.AllowedAtRoot">
+            <summary>
+            True to allow this type of document to be created at the root of the content tree
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.EnableListView">
+            <summary>
+            True to enable list view for this document type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.Icon">
+            <summary>
+            The icon to display in the content tree (see UmbracoCodeFirst.BuiltInIcons for constants
+            representing Umbraco's default icon set)
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.IconColor">
+            <summary>
+            The colour to use for the icon in the content tree (defaults to black)
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTypeAttribute.Description">
+            <summary>
+            The Description of the document type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.DoNotSyncDataTypeAttribute">
+            <summary>
+            Specifies that the class should not be persisted in the Umbraco database (used for models of the default data types included in Umbraco)
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute">
+            <summary>
+            Specifies that the decorated type is a code-first data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.#ctor(System.String,System.String,System.Type,Felinesoft.UmbracoCodeFirst.Attributes.DatabaseType,System.Boolean)">
+            <summary>
+            Specifies that the decorated type is a code-first data type
+            </summary>
+            <param name="propertyEditorAlias">The property editor alias for the data type</param>
+            <param name="name">The instance name for the data type</param>
+            <param name="converterType">The default converter type which can convert between the code-first class and an Umbraco property of that data type</param>
+            <param name="dbType">The storage type used to store the data type value in the database</param>
+            <param name="useConverter">False to use no converter if converterType is null, true to attempt to use an automatic converter.
+            Using an automatic converter requires the data type class to implement IUmbracoDataType[`Tdb]</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.ConverterType">
+            <summary>
+            The default converter type which can convert between the code-first class and an Umbraco property of that data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.Initialise(System.Type)">
+            <summary>
+            Initialises the Factory property based on the type to which the attribute is applied.
+            </summary>
+            <param name="targetType">The type to which the attribute is applied</param>
+            <returns>Returns itself, for method chaining.</returns>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.Name">
+            <summary>
+            The instance name of the data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.PropertyEditorAlias">
+            <summary>
+            The property editor alias of the data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.DbType">
+            <summary>
+            The database storage type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.GetConverterType">
+            <summary>
+            Gets the converter type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.MakeAutoConverterType(System.Type,Felinesoft.UmbracoCodeFirst.Attributes.DatabaseType@)">
+            <summary>
+            Composes a generic converter which can convert the IUmbracoDataType to which this attribute is applied
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised accessing the DbType or ConverterType properties will cause an exception.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.UseConverter">
+            <summary>
+            True to use the specified converter, false to do no conversion
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeAttribute.DecoratedType">
+            <summary>
+            The type to which this instance of the attribute is applied
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeInstanceAttribute.Name">
+            <summary>
+            The instance name of the data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeInstanceAttribute.PropertyEditorAlias">
+            <summary>
+            The property editor alias of the data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeInstanceAttribute.DbType">
+            <summary>
+            The database storage type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DataTypeInstanceAttribute.ConverterType">
+            <summary>
+            The default converter type which can convert between the code-first class and an Umbraco property of that data type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute">
+            <summary>
+            Specifies that a property should be used as a document property on a document type.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.Name">
+            <summary>
+            The name of the property
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.Alias">
+            <summary>
+            The alias of the property
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.Mandatory">
+            <summary>
+            Whether or not the property is required to be set before the document can be saved
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.Description">
+            <summary>
+            A description of the property, shown under the title
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.SortOrder">
+            <summary>
+            The sort order of the property
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.ValidationRegularExpression">
+            <summary>
+            The validation regex for the property
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.AddTabAliasToPropertyAlias">
+            <summary>
+            True to add the tab alias to the property alias when creating the document type.
+            This prevents accidental alias naming collisions when two different tabs have a property
+            with the same name.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.DataType">
+            <summary>
+            <para>The name of the data type to use for this property.</para> 
+            <para>This value is ignored if the property type is a code-first data type. It should be used
+            when the property type matches the output type of the relevant property editor value converter.
+            The specified data type must already exist in Umbraco, it will not be created or updated when
+            specified using this value.</para>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Specifies that a property should be used as a document property on a document type.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+            <param name="name">Friendly name of the property</param>
+            <param name="alias">Alias of the property</param>
+            <param name="propertyEditorAlias">Alias of your propertyEditor</param>
+            <param name="dataTypeInstanceName">Name of the instance of your property editor, leave empty if you are using a built-in</param>
+            <param name="converterType">Converter class that inherits TypeConverter</param>
+            <param name="mandatory">if set to <c>true</c> [mandatory].</param>
+            <param name="description">The description.</param>
+            <param name="sortOrder">The sort order.</param>
+            <param name="addTabAliasToPropertyAlias">if set to <c>true</c> add's the tab's alias as a suffix to the property alias.</param>
+            <param name="dataType">
+            <para>The name of the data type to use for this property.</para> 
+            <para>This property is ignored if the property type is a code-first data type. It should be used
+            when the property type matches the output type of the relevant property editor value converter.
+            The specified data type must already exist in Umbraco, it will not be created or updated when
+            specified using this value.</para>
+            </param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.Initialise(System.Reflection.PropertyInfo)">
+            <summary>
+            Initialises the attribute properties based on the property to which the attribute is applied.
+            </summary>
+            <param name="target">The property to which the attribute is applied</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentPropertyAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised any inferred properties (i.e. those not set explicitly in the constructor) will still be null.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute">
+            <summary>
+            Specifies that a class should be used as a document type by UmbracoCodeFirst
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised any inferred properties (i.e. any not explicitly set by the caller) will still be null.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute.Initialise(System.Type)">
+            <summary>
+            Initialises the Factory property based on the type to which the attribute is applied.
+            </summary>
+            <param name="decoratedType">The type to which the attribute is applied</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.EnumDataTypeAttribute">
+            <summary>
+            Specifies that the decorated enum is a code-first enum data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.EnumDataTypeAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Specifies that the decorated enum is a code-first enum data type
+            </summary>
+            <param name="propertyEditorAlias">The property editor alias for the data type</param>
+            <param name="name">The instance name for the data type</param>
+            <param name="converterType">The default converter type which can convert between the code-first class and an Umbraco property of that data type</param>
+            <param name="dbType">The storage type used to store the data type value in the database</param>
+            <param name="useConverter">False to use no converter if converterType is null, true to attempt to use an automatic converter.
+            Automatic converters are supported for any enum.</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.EnumDataTypeAttribute.Initialise(System.Type)">
+            <summary>
+            Initialises the Factory property based on the type to which the attribute is applied.
+            </summary>
+            <param name="decoratedType">The type to which the attribute is applied</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.IInitialisableAttribute.Initialise(System.Type)">
+            <summary>
+            Initialises the Factory property based on the type to which the attribute is applied.
+            </summary>
+            <param name="targetType">The type to which the attribute is applied</param>
+            <returns>Returns itself, for method chaining.</returns>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.IInitialisableAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised accessing the Factory or FactoryType properties will cause an exception.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.IDataTypeInstance">
+            <summary>
+            Causes code-first to create a new data type instance whenever an attribute with this interface
+            is added to a content property
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute">
+            <summary>
+            Specifies that a class should be used as a media type by UmbracoCodeFirst.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute.#ctor(System.String,System.String,System.Type[],System.String,System.Boolean,System.Boolean,System.String,Felinesoft.UmbracoCodeFirst.Attributes.UmbracoIconColor)">
+            <summary>
+            Specifies that a class should be used as a media type by UmbracoCodeFirst.
+            </summary>
+            <param name="mediaTypeName">The name of the media type</param>
+            <param name="mediaTypeAlias">The alias of the media type</param>
+            <param name="allowedChildren">An array of code-first media types which are valid children of this media type</param>
+            <param name="icon">The icon to display in the content tree (see UmbracoCodeFirst.BuiltInIcons for constants representing Umbraco's default icon set)</param>
+            <param name="allowAtRoot">True to allow this type of media to be created at the root of the content tree</param>
+            <param name="enableListView">True to enable list view for this media type</param>
+            <param name="description">The Description of the media type</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised any inferred properties (i.e. any not explicitly set by the caller) will still be null.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute.Initialise(System.Type)">
+            <summary>
+            Initialises the Factory property based on the type to which the attribute is applied.
+            </summary>
+            <param name="decoratedType">The type to which the attribute is applied</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.IInitialisablePropertyAttribute.Initialise(System.Reflection.PropertyInfo)">
+            <summary>
+            Initialises the Factory property based on the property to which the attribute is applied.
+            </summary>
+            <param name="propertyTarget">The property to which the attribute is applied</param>
+            <returns>Returns itself, for method chaining.</returns>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.IInitialisablePropertyAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised accessing the Factory or FactoryType properties will cause an exception.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.MultipleCodeFirstAttribute">
+            <summary>
+            Base class for code-first attributes which can be applied multiply (see <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.CodeFirstAttribute"/> for singly-applied attributes)
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.PreValueAttribute">
+            <summary>
+            Specifies a string prevalue to apply to a data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.PreValueAttribute.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Specifies a string prevalue to apply to a data type
+            </summary>
+            <param name="alias"> The alias of the prevalue</param>
+            <param name="value"> The value of the prevalue</param>
+            <param name="id"> The id of the prevalue</param>
+            <param name="sortOrder"> The sort order of the prevalue</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.PreValueAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Specifies a string prevalue to apply to a data type
+            </summary>
+            <param name="alias"> The alias of the prevalue</param>
+            <param name="value"> The value of the prevalue</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.PreValueAttribute.Alias">
+            <summary>
+            The alias of the prevalue
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.PreValueAttribute.PreValue">
+            <summary>
+            The prevalue instance
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute">
+            <summary>
+            Specifies that a property should be used as a document tab on a document type.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute.Name">
+            <summary>
+            The name of the tab
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute.SortOrder">
+            <summary>
+            The sort order of the tab
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute.OriginalName">
+            <summary>
+            <para>Used if the tab is renamed to preserve the aliases of existing properties</para>
+            <para>If it is not null then this property's value will be used as the postfix when addTabNameToPropertyAlias is true. If this value is null then Name is used.</para>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute.#ctor(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Specifies that a property should be used as a document tab on a document type.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+            <param name="name">The name of the tab</param>
+            <param name="sortOrder">The sort order of the tab</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute.Initialise(System.Reflection.PropertyInfo)">
+            <summary>
+            Initialises the attribute properties based on the type to which the attribute is applied.
+            </summary>
+            <param name="propertyTarget">The property to which the attribute is applied</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Attributes.ContentTabAttribute.Initialised">
+            <summary>
+            Returns true if the attribute instance has been initialised.
+            Until the attribute is initialised any inferred properties (i.e. those not set explicitly in the constructor) will still be null.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Attributes.CodeFirstAttribute">
+            <summary>
+            Base class for code-first attributes which can be applied singly (see <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.MultipleCodeFirstAttribute"/> for multiply-applied attributes)
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.CodeFirstContentBase`1.NodeDetails">
+            <summary>
+            Gets the details of the represented node
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberNodeDetails">
+            <summary>
+            Represents the details of an Umbraco content node
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberNodeDetails.Content">
+            <summary>
+            The IMember instance used to construct this instance
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberNodeDetails.IsPublishedInstance">
+            <summary>
+            Returns true if this instance was constructed from an IPublishedInstance instance
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberNodeDetails.#ctor">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberNodeDetails.#ctor(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+            <param name="content">The content instance to describe</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberNodeDetails.#ctor(Umbraco.Core.Models.IMember)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+            <param name="content">The content instance to describe</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberTypeBase">
+            <summary>
+            A base class for code-first member types
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberTypeBase.#ctor">
+            <summary>
+            A base class for code-first document types.
+            This constructor initialises the NodeDetails property with an empty instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MemberTypeBase.Persist(System.Boolean)">
+            <summary>
+            Persists the current values of the instance back to the database
+            </summary>
+            <param name="contentId">Id of the Umbraco Document</param>
+            <param name="parentId">Id of the parent Umbraco Document. Only applied when creating new content. At present code-first cannot change the parent of an existing node.</param>
+            <param name="userId">The user ID for the audit trail</param>
+            <param name="raiseEvents">True to raise Umbraco content service events</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaNodeDetails">
+            <summary>
+            Represents the details of an Umbraco content node
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaNodeDetails.Media">
+            <summary>
+            The IContent instance used to construct this instance
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaNodeDetails.IsPublishedInstance">
+            <summary>
+            Returns true if this instance was constructed from an IPublishedInstance instance
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaNodeDetails.#ctor">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaNodeDetails.#ctor(Umbraco.Core.Models.IMedia)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+            <param name="content">The content instance to describe</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaTypeBase">
+            <summary>
+            A base class for code-first media types
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaTypeBase.#ctor">
+            <summary>
+            A base class for code-first media types.
+            This constructor initialises the NodeDetails property with an empty instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaNodeDetails"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.MediaTypeBase.Persist(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Persists the current values of the instance back to the database
+            </summary>
+            <param name="contentId">Id of the Umbraco media</param>
+            <param name="parentId">Id of the parent Umbraco media. Only applied when creating new content. At present code-first cannot change the parent of an existing node.</param>
+            <param name="userId">The user ID for the audit trail</param>
+            <param name="raiseEvents">True to raise Umbraco content service events</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.ContentNodeDetails.PublishedContent">
+            <summary>
+            The IPublishedContent instance used to construct this instance
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.ContentNodeDetails.Name">
+            <summary>
+            The name of the node
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.ContentNodeDetails.ContentTypeAlias">
+            <summary>
+            The alias of the node type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.ContentNodeDetails.UmbracoId">
+            <summary>
+            The id of the node
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.BuiltInIcons">
+            <summary>
+            The names of Umbraco's out-of-the-box tree icons
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1">
+            <summary>
+            A base class for code-first document types with strongly-typed child collections
+            </summary>
+            <typeparam name="T">The type of the children</typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.GetEnumerator">
+            <summary>
+            Gets the enumerator to iterate the child documents
+            </summary>
+            <returns>the enumerator to iterate the child documents</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.Add(`0)">
+            <summary>
+            Adds a child document to the collection
+            </summary>
+            <param name="item">The document to add</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.Clear">
+            <summary>
+            Clears the collection
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.Contains(`0)">
+            <summary>
+            Returns true if the collection contains the specified item
+            </summary>
+            <param name="item">The item to test for</param>
+            <returns>true if the collection contains the specified item</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the items from the collection to the specified array
+            </summary>
+            <param name="array">The array to copy in to</param>
+            <param name="arrayIndex">The starting index to copy in to</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.Count">
+            <summary>
+            Returns the number of elements in the collection
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.IsReadOnly">
+            <summary>
+            Always returns false
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.ListViewDocumentType`1.Remove(`0)">
+            <summary>
+            Removes the specified item from the collection
+            </summary>
+            <param name="item">The item to remove</param>
+            <returns>True if the item was found and removed</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.IListViewDocumentType`1">
+            <summary>
+            Represents a base for code-first document types with strongly-typed child collections
+            </summary>
+            <typeparam name="T">The type of the children</typeparam>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentTypeBase">
+            <summary>
+            A base class for code-first document types
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentTypeBase.#ctor">
+            <summary>
+            A base class for code-first document types.
+            This constructor initialises the NodeDetails property with an empty instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentTypeBase.Persist(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Persists the current values of the instance back to the database
+            </summary>
+            <param name="contentId">Id of the Umbraco Document</param>
+            <param name="parentId">Id of the parent Umbraco Document. Only applied when creating new content. At present code-first cannot change the parent of an existing node.</param>
+            <param name="userId">The user ID for the audit trail</param>
+            <param name="raiseEvents">True to raise Umbraco content service events</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.TabBase">
+            <summary>
+            A base class for document tabs
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails">
+            <summary>
+            Represents the details of an Umbraco content node
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails.Content">
+            <summary>
+            The IContent instance used to construct this instance
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails.IsPublishedInstance">
+            <summary>
+            Returns true if this instance was constructed from an IPublishedInstance instance
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails.#ctor">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails.#ctor(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+            <param name="content">The content instance to describe</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails.#ctor(Umbraco.Core.Models.IContent)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentNodeDetails"/>
+            </summary>
+            <param name="content">The content instance to describe</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Converters.AutoDataTypeConverter`2">
+            <summary>
+            A converter which can convert between a storage type of Tdb and
+            a C# type of Tentity automatically when the Tentity type implements
+            IUmbracoDataType[Tdb]
+            </summary>
+            <typeparam name="Tdb">The database storage type (int, string or DateTime)</typeparam>
+            <typeparam name="Tentity">The code-first data type which implements IUmbracoDataType[Tdb]</typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Converters.AutoDataTypeConverter`2.Create(`0,System.Action{System.Object})">
+            <summary>
+            Deserialises a Tdb value by calling IUmbracoDataType[Tdb].Initialise on
+            an instance of Tentity, passing in the input
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Converters.AutoDataTypeConverter`2.Serialise(`1)">
+            <summary>
+            Serialises a Tentity value to type Tdb by calling IUmbracoDataType[Tdb].Serialise on
+            the input
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Converters.EnumDataTypeConverter`1">
+            <summary>
+            A converter which can convert between a storage type of string and
+            a C# enum of type Tenum automatically. This only works when the property
+            editor used stores the *value* of the selected item, not its ID. 
+            DropDown, CheckboxList and DropdownMultiple work out-of-the-box. Radiobox does not.
+            </summary>
+            <typeparam name="Tenum">An enum type to convert to and from</typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Converters.EnumDataTypeConverter`1.#ctor">
+            <summary>
+            Constructs a new instance and checks if the type argument is an enum
+            </summary>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown when Tenum is not an enum type</exception>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Converters.IDataTypeConverter`2">
+            <summary>
+            A converter which can convert between a storage type of Tdb and
+            a C# type of Tentity
+            </summary>
+            <typeparam name="Tdb">The database storage type (int, string or DateTime)</typeparam>
+            <typeparam name="Tentity">The code-first data type</typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Converters.IDataTypeConverter`2.Create(`0,System.Action{System.Object})">
+            <summary>
+            Creates an instance of Tentity by deserialising or converting the input
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Converters.IDataTypeConverter`2.Serialise(`1)">
+            <summary>
+            Creates an instance of Tdb by serialising or converting the input
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache">
+            <summary>
+            Caches attributes when they are first loaded then dereferences them by decorated type and attribute type so that they must
+            only be discovered by reflection once per app lifetime.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache.Get``1(System.Type,System.Boolean)">
+            <summary>
+            Gets an attribute of type T which is applied to the input type
+            </summary>
+            <typeparam name="T">The type of attribute to look for</typeparam>
+            <param name="type">The type to look for attributes on</param>
+            <param name="initialise">True to use GetInitialisedAttribute when first loading the attribute, false to use GetCustomAttribute</param>
+            <returns>an attribute of type T which is applied to the input type, or null if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache.GetMany``1(System.Type,System.Boolean)">
+            <summary>
+            Gets a collection of attributes of type T which are applied to the input type
+            </summary>
+            <typeparam name="T">The type of attribute to look for</typeparam>
+            <param name="type">The type to look for attributes on</param>
+            <param name="initialise">True to use GetInitialisedAttribute when first loading the attribute, false to use GetCustomAttribute</param>
+            <returns>a collection of attributes of type T which are applied to the input type, or an empty collection if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache.GetManyWithInheritance``1(System.Type,System.Boolean)">
+            <summary>
+            Gets a collection of attributes of type T which are applied to the input type
+            </summary>
+            <typeparam name="T">The type of attribute to look for</typeparam>
+            <param name="type">The type to look for attributes on</param>
+            <param name="initialise">True to use GetInitialisedAttribute when first loading the attribute, false to use GetCustomAttribute</param>
+            <returns>a collection of attributes of type T which are applied to the input type, or an empty collection if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache.Get``1(System.Reflection.PropertyInfo,System.Boolean)">
+            <summary>
+            Gets an attribute of type T which is applied to the input type
+            </summary>
+            <typeparam name="T">The type of attribute to look for</typeparam>
+            <param name="property">The type to look for attributes on</param>
+            <param name="initialise">True to use GetInitialisedAttribute when first loading the attribute, false to use GetCustomAttribute</param>
+            <returns>an attribute of type T which is applied to the input type, or null if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache.GetMany``1(System.Reflection.PropertyInfo,System.Boolean)">
+            <summary>
+            Gets a collection of attributes of type T which are applied to the input type
+            </summary>
+            <typeparam name="T">The type of attribute to look for</typeparam>
+            <param name="property">The type to look for attributes on</param>
+            <param name="initialise">True to use GetInitialisedAttribute when first loading the attribute, false to use GetCustomAttribute</param>
+            <returns>a collection of attributes of type T which are applied to the input type, or an empty collection if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirst.CodeFirstAttributeCache.GetManyWithInheritance``1(System.Reflection.PropertyInfo,System.Boolean)">
+            <summary>
+            Gets a collection of attributes of type T which are applied to the input type
+            </summary>
+            <typeparam name="T">The type of attribute to look for</typeparam>
+            <param name="property">The type to look for attributes on</param>
+            <param name="initialise">True to use GetInitialisedAttribute when first loading the attribute, false to use GetCustomAttribute</param>
+            <returns>a collection of attributes of type T which are applied to the input type, or an empty collection if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.CodeFirstProxyInterceptor.MemberInfoEquals(System.Reflection.MemberInfo,System.Reflection.MemberInfo)">
+            <summary>
+            http://blogs.msdn.com/b/kingces/archive/2005/08/17/452774.aspx
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.HttpContextFaker">
+            <summary>
+                Holds the current HttpContext, replaces it with a fake one, then returns the original upon dispose
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.HttpContextFaker.#ctor(System.Web.HttpContext)">
+            <summary>
+                Initializes an instance of HttpContextFaker
+            </summary>
+            <param name="toInsert">An HTTPContext to insert</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.MemberModelModule.CreateContent(Felinesoft.UmbracoCodeFirst.ContentTypes.MemberTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration)">
+            <summary>
+            <para>Creates an IMember populated with the current values of the model</para>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.MemberModelModule.UpdateContent(Felinesoft.UmbracoCodeFirst.ContentTypes.MemberTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration)">
+            <summary>
+            Updates an existing IContent item with the current values of the model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.MemberModelModule.ConvertToModel``1(Umbraco.Core.Models.IMember,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.CreateContentType(Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration,System.Boolean@)">
+            <summary>
+            This method is called when the Content Type declared in the attribute hasn't been found in Umbraco
+            </summary>
+            <param name="contentTypeService"></param>
+            <param name="fileService"></param>
+            <param name="attribute"></param>
+            <param name="contentClrType"></param>
+            <param name="dataTypeService"></param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.UpdateContentType(Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration,System.Boolean@)">
+            <summary>
+            Update the existing content Type based on the data in the attributes
+            </summary>
+            <param name="contentTypeService"></param>
+            <param name="attribute"></param>
+            <param name="contentType"></param>
+            <param name="type"></param>
+            <param name="dataTypeService"></param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.CreateTabs(Umbraco.Core.Models.IContentTypeBase,System.Collections.Generic.List{Felinesoft.UmbracoCodeFirst.Core.Modules.TabRegistration},System.Type)">
+            <summary>
+            Scans for properties on the model which have the UmbracoTab attribute
+            </summary>
+            <param name="newContentType"></param>
+            <param name="model"></param>
+            <param name="dataTypeService"></param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.CreateProperties(System.Reflection.PropertyInfo,Umbraco.Core.Models.IContentTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.TabRegistration,System.Collections.Generic.List{Felinesoft.UmbracoCodeFirst.Core.Modules.PropertyRegistration},System.Type)">
+            <summary>
+            Every property on the Tab object is scanned for the UmbracoProperty attribute
+            </summary>
+            <param name="propertyInfo"></param>
+            <param name="newContentType"></param>
+            <param name="tabName"></param>
+            <param name="dataTypeService"></param>
+            <param name="atTabGeneric"></param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.VerifyProperties(Umbraco.Core.Models.IContentTypeBase,System.Type,System.Collections.Generic.List{Felinesoft.UmbracoCodeFirst.Core.Modules.PropertyRegistration},System.Collections.Generic.List{Felinesoft.UmbracoCodeFirst.Core.Modules.TabRegistration},System.Boolean@)">
+            <summary>
+            Loop through all properties and remove existing ones if necessary
+            </summary>
+            <param name="contentType"></param>
+            <param name="type"></param>
+            <param name="dataTypeService"></param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.VerifyAllPropertiesOnTab(System.Reflection.PropertyInfo,Umbraco.Core.Models.IContentTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.TabRegistration,System.Type,System.Boolean@)">
+            <summary>
+            Scan the properties on tabs
+            </summary>
+            <param name="propertyTab"></param>
+            <param name="contentType"></param>
+            <param name="tabName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.FetchAllowedContentTypes(System.Type[],System.Type)">
+            <summary>
+            Gets the allowed children
+            </summary>
+            <param name="types"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeModuleBase.GetAliasesFromTypes(System.Type[],System.Type)">
+            <summary>
+            Gets all the document type aliases from the supplied list of types
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeModule.GetDataType(System.Type,System.Boolean)">
+            <summary>
+            Create or update a dataType
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentModelModuleBase`3.ConvertToModelInternal``1(Umbraco.Core.Models.IPublishedContent,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.MediaModelModule.CreateContent(System.Int32,Felinesoft.UmbracoCodeFirst.ContentTypes.MediaTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration)">
+            <summary>
+            <para>Creates an IContent populated with the current values of the model</para>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.MediaModelModule.UpdateContent(Felinesoft.UmbracoCodeFirst.ContentTypes.MediaTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration)">
+            <summary>
+            Updates an existing IContent item with the current values of the model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.MediaModelModule.ConvertToModel``1(Umbraco.Core.Models.IMedia,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DocumentModelModule.CreateContent(System.Int32,Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration)">
+            <summary>
+            <para>Creates an IContent populated with the current values of the model</para>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DocumentModelModule.UpdateContent(Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeRegistration)">
+            <summary>
+            Updates an existing IContent item with the current values of the model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DocumentModelModule.ConvertToModel``1(Umbraco.Core.Models.IContent,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.PreValueCacheModule.Get(Felinesoft.UmbracoCodeFirst.DataTypeRegistration)">
+            <summary>
+            Gets the prevalues for a specified data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.PropertyModule.CreateProperty(Umbraco.Core.Models.IContentTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.TabRegistration,System.Reflection.PropertyInfo,System.Type)">
+            <summary>
+            Creates a new property on the ContentType under the correct tab
+            </summary>
+            <param name="newContentType"></param>
+            <param name="tabName"></param>
+            <param name="dataTypeService"></param>
+            <param name="atTabGeneric"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.PropertyModule.VerifyExistingProperty(Umbraco.Core.Models.IContentTypeBase,Felinesoft.UmbracoCodeFirst.Core.Modules.TabRegistration,System.Reflection.PropertyInfo,System.Type,System.Boolean@)">
+            <summary>
+            Checks whether a property exists and adds if if it does not. The data type, alias, description and mandatory flag are update for existing properties, but not persisted.
+            Callers should persist the value.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.TemplateModule.RegisterTemplates(System.Type)">
+            <summary>
+            Registers the specified templates for the given doctype. Creates a basic default cshtml file if none exists at the specified path.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister">
+            <summary>
+            Allows the registration and retrieval of data type definitions.
+            Used internally when a data type is processed via an attribute, and can be used
+            by consuming code to register data types which cannot be decorated with an attribute. For example
+            one could register a <see cref="T:Felinesoft.UmbracoCodeFirst.DataTypeRegistration"/> for an enum from the .NET Framework, for 
+            a complex type from a library or indeed for any type whose source code is not controlled by the caller.
+            
+            A registration made explicitly via a call to Register will always take precedence over values specified in a [DataType] attribute.
+            If a data type is used for a property which specifies its own alias, data type name or converter in its property attribute
+            then these settings take precedence over both the registration and the data type attribute.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.GetTypesByDataTypeDefinitionIds(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Gets all types with a data type definition id which appears in the given collection
+            </summary>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown if the type is not registered</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.IsRegistered(System.Type)">
+            <summary>
+            Returns true if the specified type is registered
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.IsRegistered(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns true if the property instance is registered or if the property's type is a registered data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.IsRegisteredInstance(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns true if the specific property instance is registered. False otherwise, even if the property's type is a registered data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.TryGetRegistration(System.Type,Felinesoft.UmbracoCodeFirst.DataTypeRegistration@)">
+            <summary>
+            Gets the registration for the specified property instance
+            </summary>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown if the property instance is not registered</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.TryGetRegistration(System.Reflection.PropertyInfo,Felinesoft.UmbracoCodeFirst.DataTypeRegistration@)">
+            <summary>
+            Gets the registration for the specified type
+            </summary>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown if the type is not registered</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.DataTypeRegisterController.Register(System.Type,Felinesoft.UmbracoCodeFirst.DataTypeRegistration)">
+            <summary>
+            Registers the given data type definition for the specified type
+            </summary>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown if the specified type is already registered. 
+            This operation is not thread safe. If Register may be called from multiple threads in your application
+            then you are responsible for synchronising those calls.</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeRegister.DataTypeRegisterController.Register(System.Reflection.PropertyInfo,Felinesoft.UmbracoCodeFirst.DataTypeRegistration)">
+            <summary>
+            Registers the given data type definition for the specified property instance
+            </summary>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown if the specified instance is already registered. 
+            This operation is not thread safe. If Register may be called from multiple threads in your application
+            then you are responsible for synchronising those calls.</exception>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataType">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataType.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.DataType.T4.UmbracoCodeFirstDataTypeBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentType">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentType.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Core.Modules.ContentTypeBase.T4.UmbracoCodeFirstContentTypeBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.InitialisationMode">
+            <summary>
+            <para>
+            Affects the behaviour of the database interaction &amp; type synchronisation during initialisation.
+            </para>
+            <para> </para>
+            <para>
+            This is useful in load-balanced scenarios, where the developer may wish to nominate a "master" instance to
+            handle updating the database whilst the rest of the instances are in "ensure" mode and only check that the database is correct before
+            starting up or failing, depending on the outcome of the check.
+            </para>
+            <para> </para>
+            <para>
+            InitialisationMode.Sync - The types in the database will be updated to reflect the
+            type definitions specified.
+            </para>
+            <para> </para>
+            <para>
+            InitialisationMode.Ensure - If the types in the database do not match the type definitions specified
+            an exception will be thrown, and the database will not be modified.
+            </para>
+            <para> </para>
+            <para>
+            InitialisationMode.Passive - The type definitions are used as specified without checking if the database
+            matches the definitions. This is useful in load balanced scenarios where one
+            master instance will initialise the database whilst n slave instances will
+            simply assume that the database will be synchronised to the type definitions
+            before traffic is routed to them. It is the developer's responsibility to ensure
+            that this happens. If passive instances are used before the database types are
+            synchronised spurious behaviour may occur.
+            </para>
+            <para> </para>
+            <para>
+            Status: Stable (default: InitialisationMode.Sync)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.WriteLogOutput">
+            <summary>
+            <para>
+            Write output to the standard log file
+            </para>
+            <para>
+            Status: Stable (default: false)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.HideCodeFirstEntityTypesInTrees">
+            <summary>
+            <para>
+            Hide any code-first-managed content types from the developer &amp; settings trees in the Umbraco back-office
+            </para>
+            <para>
+            Status: Stable (default: false)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.UseBuiltInPrimitiveDataTypes">
+            <summary>
+            <para>
+            Register built-in converters and data type instances for string, int, DateTime and bool types
+            </para>
+            <para>
+            Status: Stable (default: true)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.AllowAllMediaTypesInDefaultFolder">
+            <summary>
+            <para>
+            Add all known code-first media types as allowed children of the default Folder media type
+            </para>
+            <para>
+            Status: Stable (default: true) (does nothing if UseBuiltInMediaTypes is false)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.UseBuiltInMediaTypes">
+            <summary>
+            <para>
+            Use the built-in code-first classes for the default media types - Image, File and Folder (do this if you don't need to modify those types)
+            </para>
+            <para>
+            Status: Stable (default: false) - this defaults to false as it can be very confusing when converting an existing site to code-first if this defaults to true
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.UseLazyLoadingProxies">
+            <summary>
+            <para>
+            Use Castle DynamicProxy class proxies to enable lazy loading of 
+            [ContentProperty] and [ContentComposition] properties, where the property is
+            declared as virtual.
+            </para>
+            <para>
+            Status: Stable (default: true)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.UseContextualAttributes">
+            <summary>
+            <para>
+            Allow data types to access custom attributes from their model rendering ancestry (data type itself, current property, 
+            current content type, current composing type, current composition property) when rendering. Currently used to allow
+            CSS classes and data- attributes to be applied to emitted HTML elements, e.g. so all image elements have class="codefirst-image"
+            or all emitted elements on a content type have data-mydata="myValue"
+            </para>
+            <para>
+            HTML is emitted by any data type which implements IHtmlString, including many of the built-in ones, when the property is accessed
+            within an HTML element body on a Razor view causing the Razor renderer to call ToHtmlString on the data type. 
+            If the property is accessed within a HTML element tag (e.g. as an attribute value) then
+            ToString() is called instead. In general the ToHtmlString method will render a sensible entire element (i.e. img element for an image, anchor element for a RelatedLink)
+            where the ToString() method will render the most relevant bit of data (i.e. the image URL or the RelatedLink URL).
+            </para>
+            <para>
+            Traversing the object tree to find attributes involves a lot of attribute lookups so the first load of each document type can be a bit heavier than usual, but after the first
+            load the attributes will be cached so only a few dictionary look-ups are required and performance isn't too bad.
+            </para>
+            <para>
+            Status: Experimental (default: false)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.EnablePerformanceDiagnosticTimer">
+            <summary>
+            <para>
+            Enables multi-threaded timers which measure the performance (in terms of wall-clock time) of the core modules during initialisation.
+            You can write a verbose output of the measurements to a folder of your choice by calling Diagnostics.Timing.SaveReport(_filePath); after
+            initialisation, but *before* turning this feature off.
+            </para>
+            <para>
+            It is recommended that you turn this feature on immediately before intialisation and off immediately after (after saving the report of course).
+            </para>
+            <para>
+            Status: Stable (default: false)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.EnableContentEvents">
+            <summary>
+            <para>
+            Enables raising of events to content models which implement 
+            event interfaces or specify event handlers which do so.
+            </para>
+            <para>
+            Status: Stable (default: true)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.UseBuiltInUmbracoDataTypes">
+            <summary>
+            <para>
+            Use the built-in code-first classes for the default Umbraco data types
+            </para>
+            <para>
+            Status: Stable (default: true)
+            </para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Features.UseConcurrentInitialisation">
+            <summary>
+            <para>
+            Use multiple threads to initialise the data/content types more quickly
+            </para>
+            <para>
+            WARNING: This does not work when distributed calls are enabled and hence cannot
+            be used in load-balanced scenarios.
+            UPDATE: Works in 7.4.x for farm/balanced scenarios as distributed calls are not used.
+            </para>
+            <para>
+            Status: Stable (default: true)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Felinesoft.UmbracoCodeFirst.InitialisationMode.Sync">
+            <summary>
+            The types in the database will be updated to reflect the
+            type definitions specified
+            </summary>
+        </member>
+        <member name="F:Felinesoft.UmbracoCodeFirst.InitialisationMode.Ensure">
+            <summary>
+            If the types in the database do not match the type definitions specified
+            an exception will be thrown, and the database will not be modified.
+            </summary>
+        </member>
+        <member name="F:Felinesoft.UmbracoCodeFirst.InitialisationMode.Passive">
+            <summary>
+            The types definitions are used as specified without checking if the database
+            matches the definitions. This is useful in load balanced scenarios where one
+            master instance will initialise the database whilst n slave instances will
+            simply assume that the database will be synchronised to the type definitions
+            before traffic is routed to them. It is the developer's responsibility to ensure
+            that this happens. If passive instances are used before the database types are
+            synchronised spurious behaviour may occur.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.EnumDataTypeRegistration`1">
+            <summary>
+            Represents the information needed to map an Umbraco select or multiselect data type to a .NET enum type
+            </summary>
+            <typeparam name="Tenum">The enum type to map</typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.EnumDataTypeRegistration`1.#ctor(System.String,System.String,System.Type,System.Boolean)">
+            <summary>
+            Represents the information needed to map an Umbraco select or multiselect data type to a .NET enum type.
+            If no data type instance or property editor is specified then checkboxlist will be used for [Flags] enums and dropdown will be used for regular enums.
+            </summary>
+            <param name="instanceName">the data type instance name</param>
+            <param name="propertyEditorAlias">the data type property editor alias</param>
+            <param name="converterType">the type converter to use to transform the Umbraco value into the enum</param>
+            <param name="useConverter">True to use an automatic converter if none is specified. False to use no converter.</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Extensions.CasingExtensions">
+            <summary>
+            Extensions to convert strings between proper, pascal and camel case
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CasingExtensions.ToPascalCase(System.String)">
+            <summary>
+            Convert the string to Pascal case.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CasingExtensions.ToCamelCase(System.String)">
+            <summary>
+            Convert the string to camel case
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CasingExtensions.ToProperCase(System.String)">
+            <summary>
+            Capitalize the first character and add a space before
+            each capitalized letter except the first character.
+            </summary>
+            <param name="the_string"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Extensions.CodeFirstExtensions">
+            <summary>
+            Convenience extensions for retrieving and working with metadata
+            of code-first classes
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CodeFirstExtensions.GetDocumentTypeAlias(Felinesoft.UmbracoCodeFirst.ContentTypes.DocumentTypeBase)">
+            <summary>
+            Accesses the <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute"/> applied to a class to find
+            the document type alias for that class
+            </summary>
+            <param name="input">The document type instance to get the alias for</param>
+            <returns>the document type alias</returns>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown if the specified type does not have a <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute"/> attribute.</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CodeFirstExtensions.GetDocumentTypeAlias(System.Type)">
+            <summary>
+            Accesses the <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute"/> applied to a class to find
+            the document type alias for that class
+            </summary>
+            <param name="input">The document type to get the alias for</param>
+            <returns>the document type alias</returns>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown if the specified type does not have a <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.DocumentTypeAttribute"/> attribute.</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CodeFirstExtensions.GetMediaTypeAlias(Felinesoft.UmbracoCodeFirst.ContentTypes.MediaTypeBase)">
+            <summary>
+            Accesses the <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute"/> applied to a class to find
+            the media type alias for that class
+            </summary>
+            <param name="input">The media type instance to get the alias for</param>
+            <returns>the media type alias</returns>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown if the specified type does not have a <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute"/> attribute.</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.CodeFirstExtensions.GetMediaTypeAlias(System.Type)">
+            <summary>
+            Accesses the <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute"/> applied to a class to find
+            the media type alias for that class
+            </summary>
+            <param name="input">The media type to get the alias for</param>
+            <returns>the media type alias</returns>
+            <exception cref="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">Thrown if the specified type does not have a <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.MediaTypeAttribute"/> attribute.</exception>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Extensions.ContentExtensions">
+            <summary>
+            Extensions used to allow conversion between Umbraco interfaces
+            and strongly typed models
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.ContentExtensions.ConvertToModel``1(Umbraco.Core.Models.IContent,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.ContentExtensions.ConvertDocumentToModel``1(Umbraco.Core.Models.IPublishedContent,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.ContentExtensions.ConvertToModel(Umbraco.Core.Models.IPublishedContent,Felinesoft.UmbracoCodeFirst.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IPublishedContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions">
+            <summary>
+            Extensions to retrieve <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.CodeFirstAttribute"/>s applied to types
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttribute``1(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            Gets and initialises a code-first attribute applied to a member. The member must be a type or property.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.CodeFirstAttribute"/> to get</typeparam>
+            <param name="type">The type to get the attribute from</param>
+            <param name="initialise">True to initialse the attribute if it is a IInitialisableAttribute</param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttributes``1(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            Gets attributes of type T if any are applied to the given member. The member must be a type or property.
+            </summary>
+            <param name="type">The type to inspect</param>
+            <param name="initialise">True to initialise the attribute if it is initialisable</param>
+            <returns>The attribute, or null if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttribute``1(System.Type,System.Boolean)">
+            <summary>
+            Gets and initialises a code-first attribute applied to a type
+            </summary>
+            <typeparam name="T">The type of <see cref="T:Felinesoft.UmbracoCodeFirst.Attributes.CodeFirstAttribute"/> to get</typeparam>
+            <param name="type">The type to get the attribute from</param>
+            <param name="initialise">True to initialse the attribute if it is a IInitialisableAttribute</param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttributes``1(System.Type,System.Boolean)">
+            <summary>
+            Gets attributes of type T if any are applied to the given type
+            </summary>
+            <param name="type">The type to inspect</param>
+            <param name="initialise">True to initialise the attribute if it is initialisable</param>
+            <returns>The attribute, or null if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttributesWithInheritance``1(System.Type,System.Boolean)">
+            <summary>
+            Gets attributes of type T if any are applied to the given type
+            </summary>
+            <param name="type">The type to inspect</param>
+            <param name="initialise">True to initialise the attribute if it is initialisable</param>
+            <returns>The attribute, or null if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttribute``1(System.Reflection.PropertyInfo,System.Boolean)">
+            <summary>
+            Gets an attribute of type T if one is applied to the given property
+            </summary>
+            <param name="info">The property to inspect</param>
+            <param name="initialise">True to initialise the attribute if it is initialisable</param>
+            <returns>The attribute, or null if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttributes``1(System.Reflection.PropertyInfo,System.Boolean)">
+            <summary>
+            Gets a collection of attributes of type T if any are applied to the given property
+            </summary>
+            <param name="info">The property to inspect</param>
+            <param name="initialise">True to initialise the attribute if it is initialisable</param>
+            <returns>The attributes, or an empty collection if none is found</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.AttributeHelperExtensions.GetCodeFirstAttributesWithInheritance``1(System.Reflection.PropertyInfo,System.Boolean)">
+            <summary>
+            Gets a collection of attributes of type T if any are applied to the given property
+            </summary>
+            <param name="info">The property to inspect</param>
+            <param name="initialise">True to initialise the attribute if it is initialisable</param>
+            <returns>The attributes, or an empty collection if none is found</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Extensions.StringHelperExtensions">
+            <summary>
+            Convenience methods used when formatting and transforming Umbraco values to
+            valid C# member names.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.StringHelperExtensions.ParseUrl(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Function to parse an URL to a better format
+            </summary>
+            <param name="input">The URL that needs to be parsed</param>
+            <param name="allowCommas">True to allow commas in the output</param>
+            <param name="toLowerCase">True to convert the URL to lower case</param>
+            <returns>A reformatted URL</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Extensions.StringHelperExtensions.HyphenToUnderscore(System.String)">
+            <summary>
+            Replace hyphen ('-') with underscore ('_')
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ListView_Media.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ListView_Media.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.DatePicker.Initialise(System.DateTime)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.DatePicker.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.DropdownList">
+            <summary>
+            Represents Umbraco's built-in dropdown list data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.FolderBrowser.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.FolderBrowser.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ImageCropper.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ImageCropper.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Label.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Label.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyMediaPicker.Initialise(System.Int32)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyMediaPicker.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyMemberPicker.Initialise(System.Int32)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyMemberPicker.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Numeric.Initialise(System.Int32)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Numeric.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.RadioButtonList">
+            <summary>
+            Represents Umbraco's built-in radio button group data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.RadioButtonList.Initialise(System.Int32)">
+            <summary>
+            Initialises the instance from the Umbraco prevalue ID
+            </summary>
+            <param name="dbValue">the Umbraco prevalue ID</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.RadioButtonList.Serialise">
+            <summary>
+            Returns the Umbraco PreValue ID of the selected item, or -1 if an invalid selection is made
+            </summary>
+            <returns>the Umbraco prevalue ID</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.DropdownMultiple">
+            <summary>
+            Represents Umbraco's built-in multi-select dropdown data type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.CheckboxList">
+            <summary>
+            Represents Umbraco's built-in checkbox list data type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Tags.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Tags.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.TextboxMultiple.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.TextboxMultiple.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Textstring.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Textstring.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.TrueFalse.Initialise(System.Int32)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.TrueFalse.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Upload.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.Upload.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker">
+            <summary>
+            Represents Umbraco's built-in content picker data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.Url">
+            <summary>
+            The URL of the content
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.Id">
+            <summary>
+            The ID of the content
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.Name">
+            <summary>
+            The name of the content node
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.ErrorMessage">
+            <summary>
+            A description of any errors which occurred whilst loading the content
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.HasContentError">
+            <summary>
+            True if any errors occurred whilst loading the content
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.Initialise(System.Int32)">
+            <summary>
+            Initialises the instance from an Umbraco node ID
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.LegacyContentPicker.Serialise">
+            <summary>
+            Returns the selected ID as a string
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ColorPicker">
+            <summary>
+            Represents Umbraco's built-in color picker data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ColorPicker.Color">
+            <summary>
+            Gets the selected colour
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ColorPicker.HexCode">
+            <summary>
+            Gets and sets the hex code of the selected color.
+            A # is always prefixed to the returned value. Prefixing a # to input values is optional.
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ColorPicker.Initialise(System.String)">
+            <summary>
+            Initialises the instance from a hex code without a # prefix
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.ColorPicker.Serialise">
+            <summary>
+            Serialises the instance to a hex code without a # prefix
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltIn.DocumentPicker`1">
+            <summary>
+            A strongly-typed content picker which provides a strongly-typed model of the picked document.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.NodePicker`2.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.NodePicker`2.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.Caption">
+            <summary>
+            A free-text caption
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.Url">
+            <summary>
+            An integer if IsInternal is true, an absolute URL if IsInternal is false
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.NewWindow">
+            <summary>
+            True to open link in _blank
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.IsInternal">
+            <summary>
+            True if the link is to a document node in this site
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.InternalName">
+            <summary>
+            The name of the internal node, or null if IsInternal is false
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.Title">
+            <summary>
+            A free-text title. When a link is specified via the Umb back-office this is always the same as the caption.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.RelatedLink.SelectedNodeId">
+            <summary>
+            The ID of the selected internal node.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltInDataTypes">
+            <summary>
+            The instance names of Umbraco's out-of-the-box data types
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.BuiltInPropertyEditorAliases">
+            <summary>
+            The aliases of Umbraco's out-of-the-box property editors
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.IMediaItem.FileSize">
+            <summary>
+            The size of the file in bytes
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.MediaItem.FileSize">
+            <summary>
+            The size of the file in bytes
+            </summary>
+            
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.XPathItem.GetCData(System.Xml.XPath.XPathNodeIterator,System.String)">
+            <summary>
+            Gets a CData value from an XML node as specified by an xpath
+            </summary>
+            <param name="iterator">The node iterator to get the node from</param>
+            <param name="xpath">The path to the node</param>
+            <returns>The value of the node</returns>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.XPathItem.GetAttribute(System.Xml.XPath.XPathNodeIterator,System.String)">
+            <summary>
+            Gets an attribute value from an XML node
+            </summary>
+            <param name="iterator">The node iterator to get the node from</param>
+            <param name="attributeName">The attribute of the node to get</param>
+            <returns>The value of the attribute</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType">
+            <summary>
+            A base class for data types which select a single value from a list of prevalues
+            </summary>
+            <remarks>
+            This works with editors which store the actual string value as the property value.
+            Editors which store the prevalue ID are not supported and in this case one should override 
+            Serialise and Initialise in a derived class to get the actual value based on the ID.
+            </remarks>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType.SelectedIsValid">
+            <summary>
+            Returns true if the selected value is contained in the current list of prevalue options
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType.SelectedIndex">
+            <summary>
+            Returns the index of the currently selected item, or -1 if the selected value is no longer valid.
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType.SelectedValue">
+            <summary>
+            Gets and sets the selected value.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the input value is not in the Options collection</exception>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType.SetInvalidValue(System.String)">
+            <summary>
+            Allows an invalid value to be explicitly set, bypassing
+            the protection in the SelectedValue property setter.
+            </summary>
+            <param name="value">The value to set</param>
+            <remarks>This is equivalent to calling the base implementation of Initialise but, as Initialise is virtual, this 
+            method should be preferred as it guarantees the correct behaviour in derived types</remarks>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType.Initialise(System.String)">
+            <summary>
+            Initialises the current instance from a string containing a single value
+            </summary>
+            <param name="value">The serialised value</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.SingleSelectDataType.Serialise">
+            <summary>
+            Serialises the current instance to a string containing the selected value
+            </summary>
+            <returns>The serialised instance</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.Item">
+            <summary>
+            An item from a list of valid options, including a flag indicating whether the item is selected
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.Item.Value">
+            <summary>
+            The value of the item
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.Item.Selected">
+            <summary>
+            True if the item is selected
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.Item.#ctor(System.String,System.Boolean)">
+            <summary>
+            An item from a list of valid options, including a flag indicating whether the item is selected
+            </summary>
+            <param name="value">The value of the item</param>
+            <param name="isSelected">True if the item is selected</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType">
+            <summary>
+            A base class for data types which select multiple values from a list of prevalues
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.SelectedValues">
+            <summary>
+            Gets the selected values
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.InvalidSelections">
+            <summary>
+            Gets any selected values which are no longer in the collection of valid options
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.Items">
+            <summary>
+            Gets all of the items
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.Item(System.Int32)">
+            <summary>
+            Gets an item by its index
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.Item(System.String)">
+            <summary>
+            Gets an item by its value
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.Initialise(System.String)">
+            <summary>
+            Initialises the instance from a comma-separated list of values
+            </summary>
+            <param name="dbValue">a comma-separated list of values</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.MultiselectDataType.Serialise">
+            <summary>
+            Serialises the instance to a comma-separated list of values
+            </summary>
+            <returns>a comma-separated list of values</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.SelectListDataType">
+            <summary>
+            A base class for data types which select values from a list of prevalues
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.SelectListDataType.Init">
+            <summary>
+            Initialises the prevalues and options collections
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.SelectListDataType.Options">
+            <summary>
+            Gets the list of valid options for this data type
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.SelectListDataType.PreValues">
+            <summary>
+            Gets the prevalues for this data type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoDataType">
+            <summary>
+            A common base for interfaces specifying valid Umbraco database storage formats
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoDataType`1">
+            <summary>
+            A generic base for interfaces specifying valid Umbraco database storage formats
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoDataType`1.Initialise(`0)">
+            <summary>
+            Initialises the current instance with the values deserialised from dbValue
+            </summary>
+            <param name="dbValue">The serialised value</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoDataType`1.Serialise">
+            <summary>
+            Serialises the current instance to type T
+            </summary>
+            <returns>The serialised instance</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoNtextDataType`1">
+            <summary>
+            Interface specifying an ntext database storage type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoNvarcharDataType`1">
+            <summary>
+            Interface specifying an nvarchar database storage type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoDateTimeDataType`1">
+            <summary>
+            Interface specifying a DateTime database storage type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoIntegerDataType`1">
+            <summary>
+            Interface specifying an integer database storage type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoIntegerDataType">
+            <summary>
+            Interface specifying an integer database storage type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoNtextDataType">
+            <summary>
+            Interface specifying a string database storage type. This interface uses
+            the ntext database storage type.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoNvarcharDataType">
+            <summary>
+            Interface specifying a string database storage type. This interface uses
+            the ntext database storage type.
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.IUmbracoDateDataType">
+            <summary>
+            Interface specifying a DateTime database storage type
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType">
+            <summary>
+            A data type base which allows the derived type to be serialised to and deserialised from JSON using JsonConvert
+            </summary>
+            <example>
+            <code>
+                [DataType(propertyEditorAlias: "CodeFirst.JsonAddressEditor")]
+                public class AddressDataType : UmbracoJsonDataType
+                {
+                    public int PropertyNumber { get; set; }
+                    public string AddressLine1 { get; set; }
+                    public string AddressLine2 { get; set; }
+                    public string City { get; set; }
+                    public string PostalCode { get; set; }
+                    
+                    [JsonIgnore]
+                    public string Region
+                    {
+                    get
+                        {
+                            return string.Format("{0}, {1}", City, PostalCode);
+                        }
+                    }
+                }
+            </code>
+            </example>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType.#ctor(Newtonsoft.Json.NullValueHandling)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType"/>
+            </summary>
+            <param name="nullHandling">Defines how null properties are serialised</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType.#ctor(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Constructs a new instance of <see cref="T:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType"/>
+            </summary>
+            <param name="serializerSettings">Defines how (de)serialisation is done by Newtonsoft JSON</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType.NullHandling">
+            <summary>
+            Defines how null properties are serialised
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType.Initialise(System.String)">
+            <summary>
+            Initialises the current instance with the 
+            values deserialised from the given JSON string
+            </summary>
+            <param name="dbValue">The JSON string</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypes.UmbracoJsonDataType.Serialise">
+            <summary>
+            Serialises the current instance to a JSON string
+            </summary>
+            <returns>The serialised instance</returns>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Exceptions.CodeFirstException">
+            <summary>
+            A base type for exceptions relating to the creation, persistence and mapping of code-first data and document types
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.DataTypeRegistration">
+            <summary>
+            Represents the information needed to map an Umbraco data type to a .NET property type
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.#ctor(System.String,System.String,System.Type,Felinesoft.UmbracoCodeFirst.Attributes.DatabaseType,Umbraco.Core.Models.IDataTypeDefinition,System.Boolean)">
+            <summary>
+            Represents the information needed to map an Umbraco data type to a .NET property type
+            </summary>
+            <param name="dataTypeInstanceName">The data type instance name</param>
+            <param name="propertyEditorAlias">The property editor alias</param>
+            <param name="converterType">The type converter to use to transform the Umbraco value into its .NET counterpart</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.DataTypeInstanceName">
+            <summary>
+            The data type instance name
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.ConverterType">
+            <summary>
+            The type converter to use to transform the Umbraco value into its .NET counterpart
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.PropertyEditorAlias">
+            <summary>
+            The property editor alias
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.DbType">
+            <summary>
+            The database storage type used to store the value
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypeRegistration.Definition">
+            <summary>
+            The Umbraco data type definition
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.CodeFirstManager">
+            <summary>
+            Manages the UmbracoCodeFirst core, allowing data type registration and content type and instance discovery and creation.
+            </summary>
+            <example>
+            <code>
+              protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+              {
+                  base.ApplicationStarted(umbracoApplication, applicationContext);
+                  
+                  //Initialise code-first using the types in the current assembly
+                  Felinesoft.UmbracoCodeFirst.CodeFirstManager.Current.Initialise(this.GetType().Assembly);
+               }
+            </code>
+            </example>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirstManager.#ctor">
+            <summary>
+            Constructs the singleton instance
+            </summary>
+            <param name="contentManager">The <see cref="!:IDefaultContentManager"/> to use for creating and retrieving content instances</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.CodeFirstManager.Current">
+            <summary>
+            Gets the current singleton instance of <see cref="T:Felinesoft.UmbracoCodeFirst.CodeFirstManager"/>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirstManager.Initialise(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Boolean)">
+            <summary>
+            Scans the supplied collection of assemblies for code-first document types, media types, data types and document instances.
+            All items are added or updated before control is returned; after running this method all code-first items found in the collection should exist in Umbraco.
+            It is important to include *all* required elements in a single call to initialise; custom data types used within a document type must be available when the document type is created.
+            </summary>
+            <param name="assemblies">The assemblies to scan</param>
+            <param name="refreshCache">True to refresh the Umbraco XML cache after creating document instances</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirstManager.Initialise(System.Reflection.Assembly,System.Boolean)">
+            <summary>
+            Scans the supplied assembly for code-first document types, media types, data types and document instances.
+            All items are added or updated before control is returned; after running this method all code-first items found in the assembly should exist in Umbraco.
+            It is important to include *all* required elements in a single call to initialise; custom data types used within a document type must be available when the document type is created.
+            </summary>
+            <param name="assembly">The assembly to scan</param>
+            <param name="refreshCache">True to refresh the Umbraco XML cache after creating document instances</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.CodeFirstManager.Initialise(System.Collections.Generic.IEnumerable{System.Type},System.Boolean)">
+            <summary>
+            Scans the supplied collection of types for code-first document types, media types, data types and document instances.
+            All items are added or updated before control is returned; after running this method all code-first items found in the collection should exist in Umbraco.
+            It is important to include *all* required elements in a single call to initialise; custom data types used within a document type must be available when the document type is created.
+            </summary>
+            <param name="types">The types to scan</param>
+            <param name="refreshCache">True to refresh the Umbraco XML cache after creating document instances</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Controllers.CodeFirstController">
+            <summary>
+            <para>Converts IPublishedContent instances to code-first strongly-typed models and returns them as the model to a view. 
+            If no suitable model exists the Umbraco RenderModel is passed through to the view, making it safe to mix code-first and manual
+            document types.</para>
+            <para>This controller is suitable as a replacement for the default controller in the controller resolver, allowing strongly-typed
+            views to be created without creating a custom controller.</para>
+            <para>Views which inherit <see cref="!:UmbracoViewPage&gt;Tdocument&lt;"/> or specify @model Tdocument will work with this controller</para>
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Controllers.CodeFirstController.Index(Umbraco.Web.Models.RenderModel)">
+            <summary>
+            <para>Converts IPublishedContent instances to code-first strongly-typed models and returns them as the model to a view. 
+            If no suitable model exists the Umbraco RenderModel is passed through to the view, making it safe to mix code-first and manual
+            document types.</para>
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.DataTypeDescription.CustomType">
+            <summary>
+            true to add serialise/initialise stubs for an unknown property editor
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Views.UmbracoDocumentViewPage`1">
+            <summary>
+            Extends the default Umbraco view, adding a strongly-typed document property and a DocumentHelper.
+            This view can be used to leverage strongly-typed models without replacing the default controller or implementing a custom controller.
+            An exception will be thrown during construction if the current page is not of the correct document type. 
+            </summary>
+            <typeparam name="Tdocument">The document type</typeparam>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Views.UmbracoDocumentViewPage`1.DocumentHelper">
+            <summary>
+            A HTML helper for the document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Views.UmbracoDocumentViewPage`1.Document">
+            <summary>
+            The document model
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Views.CodeFirstDocumentView`2">
+            <summary>
+            <para>
+            A custom view which provides a strongly-typed document model and a custom view model with specialised HTML helpers for each model.
+            </para>
+            <para>
+            The view has an @Model property containing the original Umbraco RenderModel and also has @Document and @ViewModel properties of types Tdocument and Tviewmodel respectively,
+            as well as @DocumentHelper and @ViewModelHelper HTML helper properties.
+            </para>
+            </summary>
+            <typeparam name="Tdocument">the document type</typeparam>
+            <typeparam name="Tviewmodel">the view model type</typeparam>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Views.CodeFirstDocumentView`2.DocumentHelper">
+            <summary>
+            A HTML helper for the document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Views.CodeFirstDocumentView`2.ViewModelHelper">
+            <summary>
+            A HTML helper for the view model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Views.CodeFirstDocumentView`2.Document">
+            <summary>
+            The document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Views.CodeFirstDocumentView`2.ViewModel">
+            <summary>
+            The view model
+            </summary>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Views.CodeFirstDocumentView`2.SetViewData(System.Web.Mvc.ViewDataDictionary)">
+            <summary>
+            Intercepts the view data to get a reference to the code-first model, then
+            passes the render model down to the base method (thus allowing the @Model property
+            to behave as it usually does in an Umbraco view)
+            </summary>
+            <param name="viewData">The view data for the request</param>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ViewHelpers.CodeFirstDocumentHelper`1">
+            <summary>
+            A specialised helper for use with the document model in code-first strongly-typed views
+            </summary>
+            <typeparam name="Tdocument">The document type</typeparam>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.CodeFirstDocumentHelper`1.Document">
+            <summary>
+            The document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.CodeFirstDocumentHelper`1.DocumentHelper">
+            <summary>
+            A HTML helper for the document model
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ViewHelpers.CodeFirstViewHelper`2">
+            <summary>
+            A set of specialised helpers for use with the document and view models in code-first strongly-typed views
+            </summary>
+            <typeparam name="Tdocument">The document type</typeparam>
+            <typeparam name="Tviewmodel">The view model type</typeparam>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.CodeFirstViewHelper`2.ViewModelHelper">
+            <summary>
+            A HTML helper for the view model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.CodeFirstViewHelper`2.ViewModel">
+            <summary>
+            The view model
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.ViewHelpers.ICodeFirstViewHelper`2">
+            <summary>
+            A set of specialised helpers for use with the document and view models in code-first strongly-typed views
+            </summary>
+            <typeparam name="Tdocument">The document type</typeparam>
+            <typeparam name="Tviewmodel">The view model type</typeparam>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.ICodeFirstViewHelper`2.DocumentHelper">
+            <summary>
+            A HTML helper for the document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.ICodeFirstViewHelper`2.ViewModelHelper">
+            <summary>
+            A HTML helper for the view model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.ICodeFirstViewHelper`2.Document">
+            <summary>
+            The document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.ViewHelpers.ICodeFirstViewHelper`2.ViewModel">
+            <summary>
+            The view model
+            </summary>
+        </member>
+        <member name="T:Felinesoft.UmbracoCodeFirst.Models.DocumentViewModel`2">
+            <summary>
+            A model which combines a strongly-typed document with a custom view model, suitable for use with a view which inherits <see cref="!:CodeFirstDocumentView`2"/>
+            </summary>
+            <typeparam name="Tdocument"></typeparam>
+            <typeparam name="Tviewmodel"></typeparam>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Models.DocumentViewModel`2.#ctor(Umbraco.Web.Models.RenderModel,`0,`1)">
+            <summary>
+            Constructs a new instance
+            </summary>
+            <param name="renderModel">The Umbraco render model</param>
+            <param name="document">The strongly-typed document model</param>
+            <param name="viewModel">A custom view model</param>
+        </member>
+        <member name="M:Felinesoft.UmbracoCodeFirst.Models.DocumentViewModel`2.#ctor(Umbraco.Web.Models.RenderModel,`1)">
+            <summary>
+            Constructs a new instance, constructing the document
+            model automatically from the render model
+            </summary>
+            <param name="renderModel">The Umbraco render model</param>
+            <param name="viewModel">A custom view model</param>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Models.DocumentViewModel`2.Document">
+            <summary>
+            The strongly-typed document model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Models.DocumentViewModel`2.ViewModel">
+            <summary>
+            The custom view model
+            </summary>
+        </member>
+        <member name="P:Felinesoft.UmbracoCodeFirst.Models.DocumentViewModel`2.RenderModel">
+            <summary>
+            The Umbraco render model
+            </summary>
+        </member>
+    </members>
+</doc>

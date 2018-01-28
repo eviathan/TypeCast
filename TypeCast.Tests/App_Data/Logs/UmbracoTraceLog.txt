@@ -1,0 +1,37 @@
+﻿2015-11-29 14:44:21,460 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2015-11-29 14:44:21,483 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 14ms)
+2015-11-29 14:44:21,494 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2015-11-29 14:44:21,516 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 37 (took 20ms)
+2015-11-29 14:44:21,625 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2015-11-29 14:44:21,626 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 1ms)
+2015-11-29 14:44:21,626 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+2015-11-29 14:44:21,627 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 16 (took 0ms)
+2015-11-29 14:44:21,646 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2015-11-29 14:44:21,647 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 4 (took 0ms)
+2015-11-29 14:44:21,647 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2015-11-29 14:44:21,649 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 35 (took 2ms)
+2015-11-29 14:44:21,693 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2015-11-29 14:44:21,694 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 0ms)
+2015-11-29 14:44:21,694 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2015-11-29 14:44:21,694 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 0ms)
+2015-11-29 14:44:22,699 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2015-11-29 14:44:22,700 [14] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 23 (took 1ms)
+2015-11-29 14:44:23,247 [14] ERROR Umbraco.Core.UmbracoApplicationBase - [Thread 1] An unhandled exception occurred
+System.InvalidOperationException: Sequence contains more than one matching element
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeModule.UpdateOrCreateDataTypeDefinition(IDictionary`2 codeFirstPreValues, Boolean updateDataTypeDefinition, DataTypeRegistration dataTypeRegistration) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Modules\DataType\DataTypeModule.cs:line 544
+   at Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeModule.GetDataType(Type type, Boolean updateDataTypeDefinition) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Modules\DataType\DataTypeModule.cs:line 149
+   at Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeModule.InitialiseTypes(IEnumerable`1 classes, List`1 tasks) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Modules\DataType\DataTypeModule.cs:line 90
+   at Felinesoft.UmbracoCodeFirst.Core.Modules.DataTypeModule.Initialise(IEnumerable`1 classes) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Modules\DataType\DataTypeModule.cs:line 69
+   at Felinesoft.UmbracoCodeFirst.Core.Resolver.CodeFirstModuleResolver.InitialiseModule(Dictionary`2 filters, TypeAssignableEqualityComparer equalComparer, Dictionary`2 classAttributeMatches, Type t) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Resolver\CodeFirstModuleResolver.cs:line 223
+   at Felinesoft.UmbracoCodeFirst.Core.Resolver.CodeFirstModuleResolver.InitialiseModules(Dictionary`2 filters, TypeAssignableEqualityComparer equalComparer, Dictionary`2 classAttributeMatches, List`1 satisfiedDependencies, List`1 queue, List`1 toDo) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Resolver\CodeFirstModuleResolver.cs:line 212
+   at Felinesoft.UmbracoCodeFirst.Core.Resolver.CodeFirstModuleResolver.Initialise(IEnumerable`1 types) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\Resolver\CodeFirstModuleResolver.cs:line 176
+   at Felinesoft.UmbracoCodeFirst.CodeFirstManager.InitialiseModules(IEnumerable`1 types) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\CodeFirstManager.cs:line 225
+   at Felinesoft.UmbracoCodeFirst.CodeFirstManager.Initialise(IEnumerable`1 types, Boolean refreshCache) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst\Core\CodeFirstManager.cs:line 202
+   at Felinesoft.UmbracoCodeFirst.TestTarget.startup.ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext) in c:\TFS\Felinesoft.UmbracoCodeFirst\Dev Branches\dev-main\Felinesoft.UmbracoCodeFirst.TestTarget\startup.cs:line 41
+   at Umbraco.Core.ApplicationEventHandler.OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+   at Umbraco.Core.EnumerableExtensions.ForEach[TItem](IEnumerable`1 items, Action`1 action)
+   at Umbraco.Core.CoreBootManager.Complete(Action`1 afterComplete)
+   at Umbraco.Web.WebBootManager.Complete(Action`1 afterComplete)
+   at Umbraco.Core.UmbracoApplicationBase.StartApplication(Object sender, EventArgs e)
+2015-11-29 14:44:33,302 [14] INFO  Umbraco.Core.UmbracoApplicationBase - [Thread 13] Application shutdown. Reason: InitializationError
