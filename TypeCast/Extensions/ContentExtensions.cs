@@ -50,6 +50,32 @@ namespace TypeCast.Extensions
         {
             return CodeFirstManager.Current.Modules.MemberModelModule.ConvertToModel<T>(content, parentContext);
         }
+
+        /// <summary>
+        /// Extension used to convert an Content back to a Typed model instance.
+        /// Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static object ConvertToModel(this IContent content, CodeFirstModelContext parentContext = null)
+        {
+
+            return CodeFirstManager.Current.Modules.DocumentModelModule.ConvertToContentModel(content, parentContext);
+            //switch (content.)
+            //{
+            //    case PublishedItemType.Content:
+            //        return CodeFirstManager.Current.Modules.DocumentModelModule.ConvertToModel(content, parentContext);
+
+            //    case PublishedItemType.Media:
+            //        return CodeFirstManager.Current.Modules.MediaModelModule.ConvertToModel(content, parentContext);
+
+            //    case PublishedItemType.Member:
+            //        return CodeFirstManager.Current.Modules.MemberModelModule.ConvertToModel(content, parentContext);
+
+            //    default:
+            //        throw new NotImplementedException();
+            //}
+        }
         #endregion
 
         #region Get Model from IPublishedContent

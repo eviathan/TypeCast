@@ -31,6 +31,10 @@ namespace TypeCast.Core.Modules
     {
         private MethodInfo _convertToModelGenericMethod;
         private ConcurrentDictionary<Type, MethodInfo> _runtimeConvertToModelMethods = new ConcurrentDictionary<Type, MethodInfo>();
+
+        private MethodInfo _convertContentToModelGenericMethod;
+        private ConcurrentDictionary<Type, MethodInfo> _runtimeConvertContentToModelMethods = new ConcurrentDictionary<Type, MethodInfo>();
+
         private IDataTypeModule _dataTypeModule;
         private IContentTypeModuleBase _contentTypeModule;
 		private ModelEventHandler<Tservice, Tentity, T> _eventHandler;
@@ -77,10 +81,23 @@ namespace TypeCast.Core.Modules
 		{
 			_eventHandler.Invalidate();
         }
-		#endregion
+        #endregion
 
-		#region IContentModelModule
-		public object ConvertToModel(IPublishedContent content, CodeFirstModelContext parentContext = null)
+        #region IContentModelModule
+        public object ConvertToContentModel(IContent content, CodeFirstModelContext parentContext = null)
+        {
+            ContentTypeRegistration docType;
+            if (_contentTypeModule.TryGetContentType(content.ContentType.Alias, out docType))
+            {
+                MethodInfo convertToModel = GetConvertContentToModelMethod(docType.ClrType);
+                return convertToModel.Invoke(this, new object[] { content, parentContext });
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public object ConvertToModel(IPublishedContent content, CodeFirstModelContext parentContext = null)
         {
             ContentTypeRegistration docType;
             if (_contentTypeModule.TryGetContentType(content.DocumentTypeAlias, out docType))
@@ -96,6 +113,64 @@ namespace TypeCast.Core.Modules
         #endregion
 
         #region Convert Content to Model
+        /// <summary>
+        /// Extension used to convert an IContent back to a Typed model instance.
+        /// Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        protected Tmodel ConvertContentToModelInternal<Tmodel>(IContent content, CodeFirstModelContext parentContext = null) where Tmodel : CodeFirstContentBase<T>
+        {
+            ContentTypeRegistration registration;
+
+            if (content == null)
+            {
+                throw new ArgumentNullException("content", Environment.StackTrace);
+            }
+
+            if (!_contentTypeModule.TryGetContentType(content.ContentType.Alias, out registration))
+            {
+                throw new CodeFirstException("Could not find content type registration for content type alias " + content.ContentType.Alias);
+            }
+            if (registration.ClrType != typeof(Tmodel))
+            {
+                if (registration.ClrType.Inherits(typeof(Tmodel)))
+                {
+                    if (typeof(Tmodel).GetCodeFirstAttribute<ContentTypeAttribute>(false) == null) //The base type is not an Umb content type, just create the full document and cast the result
+                    {
+
+                    }
+                    else if (!_contentTypeModule.TryGetContentType(typeof(Tmodel), out registration)) //Redirect to the underlying type and make one of those instead
+                    {
+                        throw new CodeFirstException("Could not find content type registration for underlying type " + typeof(Tmodel).FullName);
+                    }
+                }
+                else
+                {
+                    throw new CodeFirstException("Registered type for content type " + content.ContentType.Alias + " is " + registration.ClrType.Name + ", not " + typeof(Tmodel).Name);
+                }
+            }
+
+            Tmodel instance = (Tmodel)CreateInstanceFromContent(content, registration, parentContext);
+
+            if (instance == null)
+            {
+                throw new CodeFirstException("Model could not be created. Target type: " + typeof(Tmodel).Name);
+            }
+
+            if ((instance as CodeFirstContentBase<T>) == null)
+            {
+                throw new CodeFirstException("Created model could not be cast to CodeFirstContentBase<T>. Type of T: " + typeof(T).Name);
+            }
+
+            (instance as CodeFirstContentBase<T>).NodeDetails = new T();
+            ((instance as CodeFirstContentBase<T>).NodeDetails as ContentNodeDetails).Initialise(content);
+            // TODO: FIX BRIAN HACK
+            //ModelEventDispatcher<Tmodel>.OnLoad(instance, content, new HttpContextWrapper(HttpContext.Current), UmbracoContext.Current, ApplicationContext.Current, CodeFirstModelContext.GetContext(instance));
+            return instance;
+        }
+
         /// <summary>
         /// Extension used to convert an IPublishedContent back to a Typed model instance.
         /// Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
@@ -351,6 +426,23 @@ namespace TypeCast.Core.Modules
             }
         }
 
+        private MethodInfo GetConvertContentToModelMethod(Type docType)
+        {
+            if (!_runtimeConvertToModelMethods.ContainsKey(docType))
+            {
+                if (_convertContentToModelGenericMethod == null)
+                {
+                    _convertContentToModelGenericMethod = this.Reflekt()
+                                                       .method<Type1>()
+                                                       .GenericDefinition() //Get this as a generic method definition, discarding the references to Type1
+                                                       .Parameters<IContent, CodeFirstModelContext>(x => x.ConvertContentToModelInternal<Type1>);
+                }
+                var convertToModel = _convertContentToModelGenericMethod.MakeGenericMethod(docType);
+                _runtimeConvertContentToModelMethods.TryAdd(docType, convertToModel);
+            }
+            return _runtimeConvertContentToModelMethods[docType];
+        }
+
         private MethodInfo GetConvertToModelMethod(Type docType)
         {
             if (!_runtimeConvertToModelMethods.ContainsKey(docType))
@@ -358,9 +450,9 @@ namespace TypeCast.Core.Modules
                 if (_convertToModelGenericMethod == null)
                 {
                     _convertToModelGenericMethod = this.Reflekt()
-                                                       .method<Type1>()
-                                                       .GenericDefinition() //Get this as a generic method definition, discarding the references to Type1
-                                                       .Parameters<IPublishedContent, CodeFirstModelContext>(x => x.ConvertToModelInternal<Type1>);
+                                                        .method<Type1>()
+                                                        .GenericDefinition() //Get this as a generic method definition, discarding the references to Type1
+                                                        .Parameters<IPublishedContent, CodeFirstModelContext>(x => x.ConvertToModelInternal<Type1>);
                 }
                 var convertToModel = _convertToModelGenericMethod.MakeGenericMethod(docType);
                 _runtimeConvertToModelMethods.TryAdd(docType, convertToModel);

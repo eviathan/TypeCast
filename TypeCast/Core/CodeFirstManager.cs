@@ -217,7 +217,7 @@ namespace TypeCast
                 Modules.AddDefaultModules();
             }
 
-            if (CodeFirstManager.Current.Features.UseBuiltInUmbracoDataTypes)
+            if (Current.Features.UseBuiltInUmbracoDataTypes)
             {
                 //pre-register the built-in datatypes
                 var builtInTypes = typeof(CodeFirstManager).Assembly.GetTypes().Where(x => x.GetCustomAttribute<BuiltInDataTypeAttribute>(false) != null);

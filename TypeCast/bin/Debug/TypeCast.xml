@@ -43,6 +43,39 @@
             </summary>
             <param name="decoratedType">The type to which the attribute is applied</param>
         </member>
+        <member name="T:TypeCast.Attributes.NestedContentPropertyAttribute">
+            <summary>
+            Specifies that a property should be used as a nested document property on a document type.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+        </member>
+        <member name="P:TypeCast.Attributes.NestedContentPropertyAttribute.NestedTypes">
+            <summary>
+            The types of document allowed to be nested in this property.
+            </summary>
+        </member>
+        <member name="M:TypeCast.Attributes.NestedContentPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String,System.Type[])">
+            <summary>
+            Specifies that a property should be used as a document property on a document type.
+            Any properties which are not set will be inferred from the property metadata and the
+            data type metadata if possible.
+            </summary>
+            <param name="name">Friendly name of the property</param>
+            <param name="alias">Alias of the property</param>
+            <param name="mandatory">if set to <c>true</c> [mandatory].</param>
+            <param name="description">The description.</param>
+            <param name="sortOrder">The sort order.</param>
+            <param name="addTabAliasToPropertyAlias">if set to <c>true</c> add's the tab's alias as a suffix to the property alias.</param>
+            <param name="dataType">
+            <para>The name of the data type to use for this property.</para> 
+            <para>This property is ignored if the property type is a code-first data type. It should be used
+            when the property type matches the output type of the relevant property editor value converter.
+            The specified data type must already exist in Umbraco, it will not be created or updated when
+            specified using this value.</para>
+            </param>
+            <param name="nestedTypes"></param>
+        </member>
         <member name="M:TypeCast.Attributes.DocumentPickerPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
             <summary>
             Specifies that a property should be used as a document property on a document type and that the SingleDocumentPicker should be
@@ -749,6 +782,11 @@
             </summary>
             <param name="content">The content instance to describe</param>
         </member>
+        <member name="T:TypeCast.Converters.NestedContentJsonConverter">
+            <summary>
+            Serialises and Deserialises Nested Content to TypeCast POCOs
+            </summary>
+        </member>
         <member name="T:TypeCast.Converters.AutoDataTypeConverter`2">
             <summary>
             A converter which can convert between a storage type of Tdb and
@@ -970,6 +1008,15 @@
             <summary>
             Create or update a dataType
             </summary>
+        </member>
+        <member name="M:TypeCast.Core.Modules.ContentModelModuleBase`3.ConvertContentToModelInternal``1(Umbraco.Core.Models.IContent,TypeCast.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an IContent back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="content"></param>
+            <returns></returns>
         </member>
         <member name="M:TypeCast.Core.Modules.ContentModelModuleBase`3.ConvertToModelInternal``1(Umbraco.Core.Models.IPublishedContent,TypeCast.Core.CodeFirstModelContext)">
             <summary>
@@ -1611,6 +1658,14 @@
             <param name="content"></param>
             <returns></returns>
         </member>
+        <member name="M:TypeCast.Extensions.ContentExtensions.ConvertToModel(Umbraco.Core.Models.IContent,TypeCast.Core.CodeFirstModelContext)">
+            <summary>
+            Extension used to convert an Content back to a Typed model instance.
+            Your model does need to inherit from UmbracoGeneratedBase and contain the correct attributes
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
         <member name="M:TypeCast.Extensions.ContentExtensions.ConvertDocumentToModel``1(Umbraco.Core.Models.IPublishedContent,TypeCast.Core.CodeFirstModelContext)">
             <summary>
             Extension used to convert an IPublishedContent back to a Typed model instance.
@@ -1720,6 +1775,71 @@
             
             </summary>
             <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContent.Count">
+            <summary>
+            Returns the size of the collection
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContent.IsReadOnly">
+            <summary>
+            Returns whether or not the collection is read only
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContent.Item(System.Int32)">
+            <summary>
+            Defines the indexer for the collection
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.Initialise(System.String)">
+            <summary>
+            Initialises the instance from the db value
+            </summary>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.Serialise">
+            <summary>
+            Serialises the instance to the db value
+            </summary>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.Add(TypeCast.DataTypes.BuiltIn.NestedContentItem)">
+            <summary>
+            Adds an item to the collection
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.Clear">
+            <summary>
+            Clears the collection
+            </summary>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.Contains(TypeCast.DataTypes.BuiltIn.NestedContentItem)">
+            <summary>
+            Checks to see if an item exists in the collection
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.CopyTo(TypeCast.DataTypes.BuiltIn.NestedContentItem[],System.Int32)">
+            <summary>
+            Copies an item to a specified index in the collection
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.Remove(TypeCast.DataTypes.BuiltIn.NestedContentItem)">
+            <summary>
+            Removes the item from the collection
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TypeCast.DataTypes.BuiltIn.NestedContent.GetEnumerator">
+            <summary>
+            Gets the Enumerator for the collection
+            </summary>
             <returns></returns>
         </member>
         <member name="M:TypeCast.DataTypes.BuiltIn.ListView_Media.Initialise(System.String)">
@@ -2290,6 +2410,44 @@
             </summary>
             <returns>The serialised instance</returns>
         </member>
+        <member name="T:TypeCast.Models.DocumentViewModel`2">
+            <summary>
+            A model which combines a strongly-typed document with a custom view model, suitable for use with a view which inherits <see cref="!:CodeFirstDocumentView`2"/>
+            </summary>
+            <typeparam name="Tdocument"></typeparam>
+            <typeparam name="Tviewmodel"></typeparam>
+        </member>
+        <member name="M:TypeCast.Models.DocumentViewModel`2.#ctor(Umbraco.Web.Models.RenderModel,`0,`1)">
+            <summary>
+            Constructs a new instance
+            </summary>
+            <param name="renderModel">The Umbraco render model</param>
+            <param name="document">The strongly-typed document model</param>
+            <param name="viewModel">A custom view model</param>
+        </member>
+        <member name="M:TypeCast.Models.DocumentViewModel`2.#ctor(Umbraco.Web.Models.RenderModel,`1)">
+            <summary>
+            Constructs a new instance, constructing the document
+            model automatically from the render model
+            </summary>
+            <param name="renderModel">The Umbraco render model</param>
+            <param name="viewModel">A custom view model</param>
+        </member>
+        <member name="P:TypeCast.Models.DocumentViewModel`2.Document">
+            <summary>
+            The strongly-typed document model
+            </summary>
+        </member>
+        <member name="P:TypeCast.Models.DocumentViewModel`2.ViewModel">
+            <summary>
+            The custom view model
+            </summary>
+        </member>
+        <member name="P:TypeCast.Models.DocumentViewModel`2.RenderModel">
+            <summary>
+            The Umbraco render model
+            </summary>
+        </member>
         <member name="T:TypeCast.Exceptions.CodeFirstException">
             <summary>
             A base type for exceptions relating to the creation, persistence and mapping of code-first data and document types
@@ -2533,43 +2691,20 @@
             The view model
             </summary>
         </member>
-        <member name="T:TypeCast.Models.DocumentViewModel`2">
+        <member name="T:System.Web.Mvc.Html.HtmlHelperExtensions">
             <summary>
-            A model which combines a strongly-typed document with a custom view model, suitable for use with a view which inherits <see cref="!:CodeFirstDocumentView`2"/>
-            </summary>
-            <typeparam name="Tdocument"></typeparam>
-            <typeparam name="Tviewmodel"></typeparam>
-        </member>
-        <member name="M:TypeCast.Models.DocumentViewModel`2.#ctor(Umbraco.Web.Models.RenderModel,`0,`1)">
-            <summary>
-            Constructs a new instance
-            </summary>
-            <param name="renderModel">The Umbraco render model</param>
-            <param name="document">The strongly-typed document model</param>
-            <param name="viewModel">A custom view model</param>
-        </member>
-        <member name="M:TypeCast.Models.DocumentViewModel`2.#ctor(Umbraco.Web.Models.RenderModel,`1)">
-            <summary>
-            Constructs a new instance, constructing the document
-            model automatically from the render model
-            </summary>
-            <param name="renderModel">The Umbraco render model</param>
-            <param name="viewModel">A custom view model</param>
-        </member>
-        <member name="P:TypeCast.Models.DocumentViewModel`2.Document">
-            <summary>
-            The strongly-typed document model
+            Document Html Helper Extensions
             </summary>
         </member>
-        <member name="P:TypeCast.Models.DocumentViewModel`2.ViewModel">
+        <member name="M:System.Web.Mvc.Html.HtmlHelperExtensions.NestedContent``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
             <summary>
-            The custom view model
+            Returns the views for each nested content item in the object that is represented by the specified expression.
             </summary>
-        </member>
-        <member name="P:TypeCast.Models.DocumentViewModel`2.RenderModel">
-            <summary>
-            The Umbraco render model
-            </summary>
+            <typeparam name="TModel"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="htmlHelper"></param>
+            <param name="expression"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

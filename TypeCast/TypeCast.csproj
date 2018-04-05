@@ -337,6 +337,8 @@
     <Compile Include="Attributes\ContentTypes\DoNotRemoveTabAttribute.cs" />
     <Compile Include="Attributes\ContentTypes\MemberGroupAttribute.cs" />
     <Compile Include="Attributes\ContentTypes\MemberTypeAttribute.cs" />
+    <Compile Include="Attributes\ContentTypes\NestedContentAttribute.cs" />
+    <Compile Include="Attributes\ContentTypes\Properties\NestedContentPropertyAttribute.cs" />
     <Compile Include="Attributes\ContentTypes\Properties\DocumentPickerPropertyAttribute.cs" />
     <Compile Include="Attributes\ContentTypes\Properties\MemberPropertyAttribute.cs" />
     <Compile Include="Attributes\CssClassAttribute.cs" />
@@ -377,6 +379,7 @@
     <Compile Include="Attributes\DataTypes\PreValues\PreValueFactoryAttribute.cs" />
     <Compile Include="Attributes\DataTypes\PreValues\PreValueFileAttribute.cs" />
     <Compile Include="ContentTypes\CodeFirstContentBase.cs" />
+    <Compile Include="ContentTypes\DocumentTypes\Folder.cs" />
     <Compile Include="ContentTypes\MemberTypes\MemberGroupBase.cs" />
     <Compile Include="ContentTypes\MemberTypes\MemberNodeDetails.cs" />
     <Compile Include="ContentTypes\MemberTypes\MemberTypeBase.cs" />
@@ -388,6 +391,7 @@
     <Compile Include="ContentTypes\SpecialAliases.cs" />
     <Compile Include="Converters\BoolTrueFalseConverter.cs" />
     <Compile Include="Converters\DataTypeConverterBase.cs" />
+    <Compile Include="Converters\NestedContentJsonConverter.cs" />
     <Compile Include="Converters\PassThroughConverter.cs" />
     <Compile Include="Core\CodeFirstAttributeCache.cs" />
     <Compile Include="Core\CodeFirstLazyInitialiser.cs" />
@@ -401,6 +405,9 @@
     <Compile Include="Core\Modules\ContentTypeBase\IContentModelModule.cs" />
     <Compile Include="Core\Modules\DataType\Registration\EnumDataTypeRegistration.cs" />
     <Compile Include="Core\Modules\Dictionary\IDictionaryModule.cs" />
+    <Compile Include="DataTypes\BuiltIn\NestedContent.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Models\UmbracoViewModel.cs" />
     <Compile Include="Seeding\DocumentSeed.cs" />
     <Compile Include="Core\Modules\Seeding\ISeedingModule.cs" />
     <Compile Include="Seeding\MediaSeed.cs" />
@@ -608,6 +615,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM Create a NuGet package for this project and place the .nupkg file in the project's output directory.

@@ -27,6 +27,15 @@ namespace TypeCast.ContentTypes
             PublishedContent = content;
         }
 
+        public virtual void Initialise(IContent content)
+        {
+            Name = content.Name;
+            ContentTypeAlias = content.ContentType.Alias;
+            UmbracoId = content.Id;
+            SortOrder = content.SortOrder;
+            PublishedContent = null;
+        }
+
         /// <summary>
         /// The IPublishedContent instance used to construct this instance
         /// </summary>

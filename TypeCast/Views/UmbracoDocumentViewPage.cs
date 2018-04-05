@@ -9,6 +9,9 @@ using TypeCast.Core.Modules;
 using Umbraco.Core;
 using TypeCast.Events;
 using TypeCast.Dictionaries;
+using TypeCast.DataTypes.BuiltIn;
+using System.Linq.Expressions;
+using System.Web.Mvc.Html;
 
 namespace TypeCast.Views
 {
@@ -18,7 +21,8 @@ namespace TypeCast.Views
     /// An exception will be thrown during construction if the current page is not of the correct document type. 
     /// </summary>
     /// <typeparam name="Tdocument">The document type</typeparam>
-    public abstract class UmbracoDocumentViewPage<Tdocument> : Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>  where Tdocument : DocumentTypeBase
+    public abstract class UmbracoDocumentViewPage<Tdocument> : Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>
+       where Tdocument : DocumentTypeBase, new()
     {
         protected UmbracoDocumentViewPage() : base()
 		{
@@ -83,6 +87,14 @@ namespace TypeCast.Views
             {
                 return defaultValue;
             }
+        }
+
+        public MvcHtmlString NestedContent<Tproperty>(Expression<Func<Tdocument, Tproperty>> expression)
+            where Tproperty : NestedContent
+        {
+            // TODO: DocumentHelper.NestedContent(x => )
+            // ... grab data from expression and pump into already existing extension method?
+            return new MvcHtmlString("TODO: IMPLEMENT THIS!");
         }
     }
 }
