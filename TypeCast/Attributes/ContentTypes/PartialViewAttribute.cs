@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TypeCast.Extensions;
 using TypeCast.Exceptions;
 using TypeCast.Attributes.ContentTypes;
+using System.Configuration;
 
 namespace TypeCast.Attributes
 {
@@ -17,6 +18,11 @@ namespace TypeCast.Attributes
     public class PartialViewAttribute : MultipleCodeFirstAttribute, IInitialisableAttribute
     {
         private string _typeName;
+
+        private string _NestedContentDefaultPartialViewPath =>
+            ConfigurationManager.AppSettings.AllKeys.Contains("CodeFirstNestedContentDefaultPartialViewPath")
+                ? ConfigurationManager.AppSettings["CodeFirstNestedContentDefaultPartialViewPath"]
+                : "NestedContent/";
 
         /// <summary>
         /// 
@@ -68,14 +74,13 @@ namespace TypeCast.Attributes
 
         public string GetRelativePartialViewPath()
         {
-            //TODO: Make path configurable with default value
             if (PartialViewPath != null)
             {
                 return $"{PartialViewPath}{DocumentName}.cshtml";
             }
             else
             {
-                string nestedContentPath = IsNestedContent ? "NestedContent/" : string.Empty;
+                string nestedContentPath = IsNestedContent ? _NestedContentDefaultPartialViewPath : string.Empty;
                 return $"{nestedContentPath}{DocumentName.ToPascalCase()}.cshtml";
             }
         }
@@ -88,8 +93,7 @@ namespace TypeCast.Attributes
             }
             else
             {
-                //TODO: Make path configurable with default value
-                string nestedContentPath = IsNestedContent ? "Partials/NestedContent/" : string.Empty;
+                string nestedContentPath = IsNestedContent ? $"Partials/{_NestedContentDefaultPartialViewPath}" : string.Empty;
                 return $"~/Views/{nestedContentPath}{DocumentName.ToPascalCase()}.cshtml";
             }
         }
