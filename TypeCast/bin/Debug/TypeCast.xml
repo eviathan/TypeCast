@@ -100,6 +100,19 @@
             specified using this value.</para>
             </param>
         </member>
+        <member name="T:TypeCast.Attributes.PartialViewAttribute">
+            <summary>
+            TODO:
+            - Wire up optional path
+            </summary>
+        </member>
+        <member name="M:TypeCast.Attributes.PartialViewAttribute.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name">The name of the partial view</param>
+            <param name="path">Relative path without precedding forward slash i.e. "MyViews/MySubViews/"</param>
+        </member>
         <member name="M:TypeCast.Attributes.MediaPickerPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
             <summary>
             Specifies that a property should be used as a document property on a document type and that the SingleMediaPicker should be
@@ -1086,6 +1099,11 @@
             <summary>
             Checks whether a property exists and adds if if it does not. The data type, alias, description and mandatory flag are update for existing properties, but not persisted.
             Callers should persist the value.
+            </summary>
+        </member>
+        <member name="T:TypeCast.Core.Modules.TemplateModule">
+            <summary>
+            NOTE / TODO: PARTIAL TEMPLATE CREATION SHOULD NOT BE IN HERE AT ALL
             </summary>
         </member>
         <member name="M:TypeCast.Core.Modules.TemplateModule.RegisterTemplates(System.Type)">

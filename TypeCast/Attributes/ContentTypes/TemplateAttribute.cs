@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TypeCast.Extensions;
 using TypeCast.Exceptions;
+using TypeCast.Attributes.ContentTypes;
 
 namespace TypeCast.Attributes
 {
@@ -48,7 +49,7 @@ namespace TypeCast.Attributes
             }
             if (TemplateAlias == null)
             {
-                TemplateAlias = docAttr.Alias.ToPascalCase();
+                TemplateAlias = docAttr.Name.ToPascalCase();
             }
             if (TemplateName == null)
             {

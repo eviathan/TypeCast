@@ -341,6 +341,7 @@
     <Compile Include="Attributes\ContentTypes\Properties\NestedContentPropertyAttribute.cs" />
     <Compile Include="Attributes\ContentTypes\Properties\DocumentPickerPropertyAttribute.cs" />
     <Compile Include="Attributes\ContentTypes\Properties\MemberPropertyAttribute.cs" />
+    <Compile Include="Attributes\ContentTypes\PartialViewAttribute.cs" />
     <Compile Include="Attributes\CssClassAttribute.cs" />
     <Compile Include="Attributes\DataTypes\PreValues\ImageCropPropertyAttribute.cs" />
     <Compile Include="Attributes\DataTypes\PreValues\InstancePreValueAttribute.cs" />
@@ -405,6 +406,8 @@
     <Compile Include="Core\Modules\ContentTypeBase\IContentModelModule.cs" />
     <Compile Include="Core\Modules\DataType\Registration\EnumDataTypeRegistration.cs" />
     <Compile Include="Core\Modules\Dictionary\IDictionaryModule.cs" />
+    <Compile Include="Core\Modules\PartialViewModule\PartialViewModule.cs" />
+    <Compile Include="Core\Modules\PartialViewModule\PartialViewModuleFactory.cs" />
     <Compile Include="DataTypes\BuiltIn\NestedContent.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Models\UmbracoViewModel.cs" />

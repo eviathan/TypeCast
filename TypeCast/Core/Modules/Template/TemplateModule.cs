@@ -16,6 +16,9 @@ using TypeCast.Exceptions;
 
 namespace TypeCast.Core.Modules
 {
+    /// <summary>
+    /// NOTE / TODO: PARTIAL TEMPLATE CREATION SHOULD NOT BE IN HERE AT ALL
+    /// </summary>
     public class TemplateModule : ITemplateModule
     {
         private IDocumentTypeModule _documentTypeModule;
@@ -109,25 +112,35 @@ namespace TypeCast.Core.Modules
 
         private ITemplate CreateTemplate(TemplateAttribute attribute)
         {
-            var path = "~/Views/" + attribute.TemplateAlias.ToPascalCase() + ".cshtml";
-            var template = new Template(path, attribute.TemplateName, attribute.TemplateAlias);
+            var absolutePath = GetAbsoluteTemplatePath(attribute);
+
+            var template = new Template(attribute.TemplateName, attribute.TemplateAlias);
+
             lock (_lock)
             {
-                if (System.IO.File.Exists(HostingEnvironment.MapPath(path)))
+                if (System.IO.File.Exists(HostingEnvironment.MapPath(absolutePath)))
                 {
                     //get the existing content from the file so it isn't overwritten when we save the template.
-                    template.Content = System.IO.File.ReadAllText(HostingEnvironment.MapPath(path));
+                    template.Content = System.IO.File.ReadAllText(HostingEnvironment.MapPath(absolutePath));
                 }
                 else
                 {
                     //TODO get this from a file resource containing a default view
-                    var content = "@inherits TypeCast.Views.UmbracoDocumentViewPage<" + attribute.DecoratedTypeFullName + ">" + Environment.NewLine + Environment.NewLine;
+                    var content = string.Empty;
+                    content = "@inherits TypeCast.Views.UmbracoDocumentViewPage<" + attribute.DecoratedTypeFullName + ">" + Environment.NewLine + Environment.NewLine;
+
                     template.Content = content;
                 }
-
+                
                 _fileService.SaveTemplate(template);
             }
             return template;
+        }
+
+
+        private string GetAbsoluteTemplatePath(TemplateAttribute attribute)
+        {
+            return $"~/Views/{attribute.TemplateAlias.ToPascalCase()}.cshtml";
         }
     }
 

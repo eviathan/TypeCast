@@ -407,6 +407,7 @@ namespace TypeCast.Extensions
             resolver.AddDefaultPropertyModule();
             resolver.AddDefaultDocumentTypeModule();
             resolver.AddDefaultTemplateModule();
+            resolver.AddDefaultPartialViewModule();
             resolver.AddDefaultMediaTypeModule();
             resolver.AddDefaultMemberTypeModule();
             resolver.AddDefaultDocumentModelModule();
