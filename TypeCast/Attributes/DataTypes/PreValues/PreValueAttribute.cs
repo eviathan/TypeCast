@@ -38,6 +38,17 @@ namespace TypeCast.Attributes
         }
 
         /// <summary>
+        /// Specifies an object prevalue to apply to a data type
+        /// </summary>
+        /// <param name="alias"> The alias of the prevalue</param>
+        /// <param name="value"> The value of the prevalue</param>
+        public PreValueAttribute(string alias, object value)
+        {
+            Alias = alias;
+            PreValue = new PreValue(value.ToString());
+        }
+
+        /// <summary>
         /// The alias of the prevalue
         /// </summary>
         public string Alias { get; private set; }

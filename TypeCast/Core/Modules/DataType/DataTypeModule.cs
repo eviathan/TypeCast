@@ -24,6 +24,7 @@ using TypeCast.Converters;
 using Umbraco.Core;
 using System.Web;
 using System.IO;
+using TypeCast.Attributes.DataTypes.PreValues;
 
 namespace TypeCast.Core.Modules
 {
@@ -253,6 +254,7 @@ namespace TypeCast.Core.Modules
             IDictionary<string, PreValue> preValues;
             var factoryAttr = instance.GetCodeFirstAttribute<InstancePreValueFactoryAttribute>();
             var instanceAttributes = instance.GetCodeFirstAttributes<InstancePreValueAttribute>();
+            var nestedContentAttribute = instance.GetCodeFirstAttribute<NestedContentPreValueAttribute>();
             var redirect = instance.GetCustomAttributes().FirstOrDefault(x => x.GetType().Implements<IDataTypeRedirect>()) as IDataTypeRedirect;
 
             PreValueContext context = new PreValueContext(instance);
@@ -271,6 +273,10 @@ namespace TypeCast.Core.Modules
                 {
                     throw new CodeFirstException("Duplicate pre-value alias on data type instance " + instance.DeclaringType.Name + "." + instance.Name, ex);
                 }
+            }
+            else if (nestedContentAttribute != null)
+            {
+                preValues = nestedContentAttribute.GetPrevalueDictionary();
             }
             else if (redirect != null)
             {

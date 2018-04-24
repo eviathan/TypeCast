@@ -45,8 +45,7 @@ namespace TypeCast.Attributes
         /// The specified data type must already exist in Umbraco, it will not be created or updated when
         /// specified using this value.</para>
         /// </param>
-        /// <param name="nestedTypes"></param>
-        public NestedContentPropertyAttribute(string name = null, string alias = null, bool mandatory = false, string description = "", int sortOrder = 0, bool addTabAliasToPropertyAlias = true, string dataType = null, Type[] nestedTypes = null)
+        public NestedContentPropertyAttribute(string name = null, string alias = null, bool mandatory = false, string description = "", int sortOrder = 0, bool addTabAliasToPropertyAlias = true, string dataType = null)
         {
             Name = name;
             Alias = alias;
@@ -55,7 +54,6 @@ namespace TypeCast.Attributes
             SortOrder = sortOrder;
             AddTabAliasToPropertyAlias = addTabAliasToPropertyAlias;
             DataType = dataType;
-            NestedTypes = nestedTypes;
         }
     }
 }

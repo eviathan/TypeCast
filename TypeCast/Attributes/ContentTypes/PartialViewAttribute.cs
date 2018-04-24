@@ -7,6 +7,7 @@ using TypeCast.Extensions;
 using TypeCast.Exceptions;
 using TypeCast.Attributes.ContentTypes;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace TypeCast.Attributes
 {
@@ -37,7 +38,18 @@ namespace TypeCast.Attributes
 
         public string DocumentName { get; private set; }
 
-        private string PartialViewPath { get; set; }
+        private string _partialViewPath = string.Empty;
+        private string PartialViewPath
+        {
+            get
+            {
+                return _partialViewPath;
+            }
+            set
+            {
+                _partialViewPath = SanitisePath(value);
+            }
+        }
 
         public bool IsNestedContent { get; private set; }
 
@@ -66,7 +78,7 @@ namespace TypeCast.Attributes
             }
             if (DocumentName == null)
             {
-                DocumentName = docAttr.Name;
+                DocumentName = docAttr.Name.ToPascalCase();
             }
             _typeName = decoratedType.FullName;
             Initialised = true;
@@ -96,6 +108,20 @@ namespace TypeCast.Attributes
                 string nestedContentPath = IsNestedContent ? $"Partials/{_NestedContentDefaultPartialViewPath}" : string.Empty;
                 return $"~/Views/{nestedContentPath}{DocumentName.ToPascalCase()}.cshtml";
             }
+        }
+
+        private string SanitisePath(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                // strip trailing and prefixed forward slashes and then readd the trailing
+                // so it meets the correct relative path format for umbracos partial constructor
+                value = Regex.Replace(value, @"^\/*", string.Empty);
+                value = Regex.Replace(value, @"\/*$", string.Empty);
+                value += "/";
+            }
+
+            return value;
         }
 
         public bool Initialised { get; private set; }
