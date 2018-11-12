@@ -345,7 +345,7 @@
     <Compile Include="Attributes\CssClassAttribute.cs" />
     <Compile Include="Attributes\DataTypes\PreValues\ImageCropPropertyAttribute.cs" />
     <Compile Include="Attributes\DataTypes\PreValues\InstancePreValueAttribute.cs" />
-    <Compile Include="Attributes\DataTypes\PreValues\NestedContentInstancePreValueAttribute.cs" />
+    <Compile Include="Attributes\DataTypes\PreValues\NestedContentPreValueAttribute.cs" />
     <Compile Include="Attributes\DictionaryAttribute.cs" />
     <Compile Include="Attributes\EventHandlerAttribute.cs" />
     <Compile Include="Attributes\HtmlDataAttribute.cs" />

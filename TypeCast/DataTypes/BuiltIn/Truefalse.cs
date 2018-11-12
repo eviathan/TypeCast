@@ -14,16 +14,16 @@ using TypeCast.Core;
 
 namespace TypeCast.DataTypes.BuiltIn
 {
-    [DataType("Umbraco.TrueFalse", "True/false")]
+    [DataType("Umbraco.TrueFalse", "Checkbox")]
     [DoNotSyncDataType][BuiltInDataType]
-    public class TrueFalse : IUmbracoIntegerDataType
+    public class Checkbox : IUmbracoIntegerDataType
     {
 
         public bool Value { get; set; }
 
-		public static implicit operator TrueFalse(bool value)
+		public static implicit operator Checkbox(bool value)
 		{
-			return new TrueFalse() { Value = value };
+			return new Checkbox() { Value = value };
 		}
 
 		/// <summary>

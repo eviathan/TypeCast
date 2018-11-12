@@ -25,13 +25,17 @@ namespace TypeCast.Attributes.DataTypes.PreValues
             [JsonProperty("nameTemplate")]
             public string NameTemplate { get; set; }
 
+            [JsonIgnore]
+            public Type Type { get; set; }
+
             public NestedContentType() { }
 
-            public NestedContentType(string documentTypeAlias, string tabAlias, string nameTemplate)
+            public NestedContentType(string documentTypeAlias, string tabAlias, string nameTemplate, Type type)
             {
                 TabAlias = tabAlias;
                 nameTemplate = documentTypeAlias;
                 Alias = Alias;
+                Type = type;
             }
         }
 
@@ -63,18 +67,6 @@ namespace TypeCast.Attributes.DataTypes.PreValues
             ContentTypes = contentTypes.Select(ConvertTypeToNestedContentType);
         }
 
-        public NestedContentPreValueAttribute(NestedContentType[] contentTypes, int minItems = 0, int maxItems = 0, bool confirmDeletes = false, bool showIcons = false, bool hideLabel = false)
-        {
-            if (!contentTypes.Any()) throw new ArgumentOutOfRangeException($"{nameof(contentTypes)} argument array needs to have at least one type.");
-
-            MinItems = minItems;
-            MaxItems = maxItems;
-            ConfirmDeletes = confirmDeletes;
-            ShowIcons = showIcons;
-            HideLabel = hideLabel;
-            ContentTypes = contentTypes;
-        }
-
         public IDictionary<string, PreValue> GetPrevalueDictionary()
         {
             var output = new Dictionary<string, PreValue>();
@@ -82,9 +74,9 @@ namespace TypeCast.Attributes.DataTypes.PreValues
             // TODO: De-yuckify this
             output.Add("minItems", new PreValue(MinItems.ToString()));
             output.Add("maxItems", new PreValue(MaxItems.ToString()));
-            output.Add("confirmDeletes", new PreValue(Convert.ToInt16(ConfirmDeletes).ToString()));
-            output.Add("showIcons", new PreValue(Convert.ToInt16(ShowIcons).ToString()));
-            output.Add("hideLabels", new PreValue(Convert.ToInt16(HideLabel).ToString()));
+            output.Add("confirmDeletes", new PreValue(Convert.ToByte(ConfirmDeletes).ToString()));
+            output.Add("showIcons", new PreValue(Convert.ToByte(ShowIcons).ToString()));
+            output.Add("hideLabels", new PreValue(Convert.ToByte(HideLabel).ToString()));
             output.Add("contentTypes", new PreValue(JsonConvert.SerializeObject(ContentTypes)));
 
             return output;
@@ -96,8 +88,9 @@ namespace TypeCast.Attributes.DataTypes.PreValues
             var name = type.Name;
 
             nestedContentType.Alias = Char.ToLowerInvariant(name[0]) + name.Substring(1);
-            nestedContentType.NameTemplate = name;
+            nestedContentType.NameTemplate = "{{$index}} - {{ pickerAlias | ncNodeName }}";
             nestedContentType.TabAlias = TabAlias;
+            nestedContentType.Type = type;
 
             return nestedContentType;
         }

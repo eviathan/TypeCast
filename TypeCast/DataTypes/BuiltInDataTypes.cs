@@ -18,7 +18,7 @@ namespace TypeCast.DataTypes
         public const string Textbox = "Textstring";
         public const string RichtextEditor = "Richtext editor";
         public const string Numeric = "Numeric";
-        public const string TrueFalse = "True/false";
+        public const string Checkbox = "Checkbox";
         public const string CheckboxList = "Checkbox list";
         public const string Dropdown = "Dropdown";
         public const string DatePicker = "Date Picker";
@@ -42,6 +42,7 @@ namespace TypeCast.DataTypes
         public const string GridBlogPost = "Grid Blogpost";
         public const string GridFrontPage = "Grid FrontPage";
         public const string GridTextPage = "Grid TextPage";
+        public const string NestedContent = "Nested Content";
 #pragma warning restore 1591
     }
 }

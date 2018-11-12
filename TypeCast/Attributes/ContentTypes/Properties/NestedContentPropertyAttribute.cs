@@ -23,11 +23,6 @@ namespace TypeCast.Attributes
     public class NestedContentPropertyAttribute : ContentPropertyAttribute, IInitialisablePropertyAttribute
     {
         /// <summary>
-        /// The types of document allowed to be nested in this property.
-        /// </summary>
-        public Type[] NestedTypes { get; set; }
-
-        /// <summary>
         /// Specifies that a property should be used as a document property on a document type.
         /// Any properties which are not set will be inferred from the property metadata and the
         /// data type metadata if possible.

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TypeCast.Attributes;
+using TypeCast.Attributes.DataTypes.PreValues;
 using TypeCast.ContentTypes;
 using TypeCast.DataTypes.BuiltIn;
 using TypeCast.Models;
@@ -36,10 +37,14 @@ namespace System.Web.Mvc.Html
 
             // Get atttribute types
             var propertyInfo = (PropertyInfo) member.Member;
-            var nestedContentPropertyAttribute = propertyInfo.GetCustomAttributes(typeof(NestedContentPropertyAttribute), true).FirstOrDefault() as NestedContentPropertyAttribute;
-            if (nestedContentPropertyAttribute == null) throw new ArgumentException($"NestedContent({typeof(TProperty).Name}) property requires a {nameof(NestedContentPropertyAttribute)} attribute.");
-            
-            var allowedNestedContentTypes = nestedContentPropertyAttribute.NestedTypes;
+
+            var nestedContentPreValueAttribute = propertyInfo.GetCustomAttributes(typeof(NestedContentPreValueAttribute), true).FirstOrDefault() as NestedContentPreValueAttribute;
+            if (nestedContentPreValueAttribute == null) throw new ArgumentException($"({typeof(TProperty).Name}) Property on ({typeof(TModel).Name}) requires a ({nameof(NestedContentPreValueAttribute)}) attribute.");
+
+            var allowedNestedContentTypes = nestedContentPreValueAttribute.ContentTypes.Select(x => x.Type)
+                                                                                       .ToArray();
+
+            if (allowedNestedContentTypes == null || !allowedNestedContentTypes.Any()) throw new ArgumentException($"NestedContent({typeof(TProperty).Name}) property requires content types set in its {nameof(NestedContentPropertyAttribute)} attribute.");
 
             var mvcHtmlStrings = new List<MvcHtmlString>();
             

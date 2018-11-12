@@ -2,7 +2,7 @@ using System;
 
 namespace TypeCast.Converters
 {
-    public sealed class BoolTrueFalseConverter : DataTypeConverterBase<int, bool>
+    public sealed class BoolCheckboxConverter : DataTypeConverterBase<int, bool>
     {
         public override bool Create(int input, Action<object> contextAction = null)
         {

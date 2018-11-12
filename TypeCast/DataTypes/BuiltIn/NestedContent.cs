@@ -14,7 +14,7 @@ using TypeCast.ContentTypes.DocumentTypes;
 namespace TypeCast.DataTypes.BuiltIn
 {
     [DataType("Umbraco.NestedContent", "Nested Content")]
-    [DoNotSyncDataType]
+    //[DoNotSyncDataType]
     [BuiltInDataType]
     public class NestedContent : ICollection<NestedContentItem>, IEnumerable<NestedContentItem>, IUmbracoNtextDataType
     {

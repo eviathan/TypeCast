@@ -57,7 +57,7 @@ namespace TypeCast.Core.Modules
             if (CodeFirstManager.Current.Features.UseBuiltInPrimitiveDataTypes)
             {
                 RegisterNvarcharType<string, PassThroughConverter<string>>(BuiltInDataTypes.Textbox);
-                RegisterIntegerType<bool, BoolTrueFalseConverter>(BuiltInDataTypes.TrueFalse);
+                RegisterIntegerType<bool, BoolCheckboxConverter>(BuiltInDataTypes.Checkbox);
                 RegisterIntegerType<int, PassThroughConverter<int>>(BuiltInDataTypes.Numeric);
                 RegisterDateTimeType<DateTime, PassThroughConverter<DateTime>>(BuiltInDataTypes.DatePickerWithTime);
             }
