@@ -474,7 +474,7 @@ namespace TypeCast.Core.Modules
         {
             if (customDataTypeAttribute.Name == null)
             {
-                customDataTypeAttribute.Name = underlyingType.DataTypeInstanceName + " (" + property.DeclaringType.Name + "." + property.Name + ")";
+                customDataTypeAttribute.Name = $"{underlyingType.DataTypeInstanceName} ({property.DeclaringType.DeclaringType.Name}.{property.DeclaringType.Name}.{property.Name})";
             }
 
             if (customDataTypeAttribute.PropertyEditorAlias == null)
