@@ -10,20 +10,26 @@ using System.Collections;
 using TypeCast.Converters;
 using TypeCast.ContentTypes.DocumentTypes;
 
-// TODO: CLEAN THIS MESS UP
 namespace TypeCast.DataTypes.BuiltIn
 {
+    /// <summary>
+    /// Nested Content Built-in Umbraco DocumentType
+    /// </summary>
     [DataType("Umbraco.NestedContent", "Nested Content")]
-    //[DoNotSyncDataType]
     [BuiltInDataType]
     public class NestedContent : ICollection<NestedContentItem>, IEnumerable<NestedContentItem>, IUmbracoNtextDataType
     {
-        private List<NestedContentItem> _items { get; set; } = new List<NestedContentItem>();
+        private List<NestedContentItem> _nestedContentItems { get; set; } = new List<NestedContentItem>();
+
+        /// <summary>
+        /// Returns the a collection of documents
+        /// </summary>
+        public IEnumerable<DocumentTypeBase> Items => _nestedContentItems.Select(x => x.Value);
 
         /// <summary>
         /// Returns the size of the collection
         /// </summary>
-        public int Count => _items.Count;
+        public int Count => _nestedContentItems.Count;
 
         /// <summary>
         /// Returns whether or not the collection is read only
@@ -39,11 +45,11 @@ namespace TypeCast.DataTypes.BuiltIn
         {
             get
             {
-                return _items[index];
+                return _nestedContentItems[index];
             }
             set
             {
-                _items[index] = value;
+                _nestedContentItems[index] = value;
             }
         }
 
@@ -55,7 +61,7 @@ namespace TypeCast.DataTypes.BuiltIn
         {
             if (string.IsNullOrWhiteSpace(dbValue)) return;
 
-            _items = JsonConvert.DeserializeObject<IEnumerable<NestedContentItem>>(dbValue).ToList();
+            _nestedContentItems = JsonConvert.DeserializeObject<IEnumerable<NestedContentItem>>(dbValue).ToList();
         }
 
         /// <summary>
@@ -63,7 +69,7 @@ namespace TypeCast.DataTypes.BuiltIn
         /// </summary>
         public string Serialise()
         {
-            return JsonConvert.SerializeObject(_items);
+            return JsonConvert.SerializeObject(_nestedContentItems);
         }
         #endregion
 
@@ -74,7 +80,7 @@ namespace TypeCast.DataTypes.BuiltIn
         /// <param name="item"></param>
         public void Add(NestedContentItem item)
         {
-            _items.Add(item);
+            _nestedContentItems.Add(item);
         }
 
         /// <summary>
@@ -82,7 +88,7 @@ namespace TypeCast.DataTypes.BuiltIn
         /// </summary>
         public void Clear()
         {
-            _items.Clear();
+            _nestedContentItems.Clear();
         }
 
         /// <summary>
@@ -92,7 +98,7 @@ namespace TypeCast.DataTypes.BuiltIn
         /// <returns></returns>
         public bool Contains(NestedContentItem item)
         {
-            return _items.Contains(item);
+            return _nestedContentItems.Contains(item);
         }
 
         /// <summary>
@@ -102,7 +108,7 @@ namespace TypeCast.DataTypes.BuiltIn
         /// <param name="arrayIndex"></param>
         public void CopyTo(NestedContentItem[] array, int arrayIndex)
         {
-            _items.CopyTo(array, arrayIndex);
+            _nestedContentItems.CopyTo(array, arrayIndex);
         }
 
         /// <summary>
@@ -112,7 +118,7 @@ namespace TypeCast.DataTypes.BuiltIn
         /// <returns></returns>
         public bool Remove(NestedContentItem item)
         {
-            return _items.Remove(item);
+            return _nestedContentItems.Remove(item);
         }
 
         /// <summary>
@@ -121,29 +127,43 @@ namespace TypeCast.DataTypes.BuiltIn
         /// <returns></returns>
         public IEnumerator<NestedContentItem> GetEnumerator()
         {
-            return _items.GetEnumerator();
+            return _nestedContentItems.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _items.GetEnumerator();
+            return _nestedContentItems.GetEnumerator();
         }
         #endregion
     }
     
-    // TODO: Move these into their own files
+    /// <summary>
+    /// Nested Content Item Data Model used for serialising/ deserialising nested content values for pesistance.
+    /// </summary>
     [JsonConverter(typeof(NestedContentJsonConverter))]
     public class NestedContentItem
     {
+        /// <summary>
+        /// Unique identifier for nested content item
+        /// </summary>
         [JsonProperty("key")]
         public string Key { get; set; }
 
+        /// <summary>
+        /// Name of nested content item (format specified by template prevalue)
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// The nested content items DocumentType alias
+        /// </summary>
         [JsonProperty("ncContentTypeAlias")]
         public string NcContentTypeAlias { get; set; }
         
+        /// <summary>
+        /// The nested Document value
+        /// </summary>
         public DocumentTypeBase Value { get; set; }
     }
 }

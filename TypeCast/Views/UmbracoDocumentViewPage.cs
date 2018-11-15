@@ -88,13 +88,5 @@ namespace TypeCast.Views
                 return defaultValue;
             }
         }
-
-        public MvcHtmlString NestedContent<Tproperty>(Expression<Func<Tdocument, Tproperty>> expression)
-            where Tproperty : NestedContent
-        {
-            // TODO: DocumentHelper.NestedContent(x => )
-            // ... grab data from expression and pump into already existing extension method?
-            return new MvcHtmlString("TODO: IMPLEMENT THIS!");
-        }
     }
 }

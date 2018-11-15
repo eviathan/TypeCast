@@ -50,12 +50,7 @@
             data type metadata if possible.
             </summary>
         </member>
-        <member name="P:TypeCast.Attributes.NestedContentPropertyAttribute.NestedTypes">
-            <summary>
-            The types of document allowed to be nested in this property.
-            </summary>
-        </member>
-        <member name="M:TypeCast.Attributes.NestedContentPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String,System.Type[])">
+        <member name="M:TypeCast.Attributes.NestedContentPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
             <summary>
             Specifies that a property should be used as a document property on a document type.
             Any properties which are not set will be inferred from the property metadata and the
@@ -74,7 +69,6 @@
             The specified data type must already exist in Umbraco, it will not be created or updated when
             specified using this value.</para>
             </param>
-            <param name="nestedTypes"></param>
         </member>
         <member name="M:TypeCast.Attributes.DocumentPickerPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
             <summary>
@@ -106,12 +100,16 @@
             - Wire up optional path
             </summary>
         </member>
-        <member name="M:TypeCast.Attributes.PartialViewAttribute.#ctor(System.String,System.String)">
+        <member name="M:TypeCast.Attributes.PartialViewAttribute.#ctor(System.String)">
             <summary>
             
             </summary>
             <param name="name">The name of the partial view</param>
-            <param name="path">Relative path without precedding forward slash i.e. "MyViews/MySubViews/"</param>
+        </member>
+        <member name="T:TypeCast.Attributes.DataTypes.PreValues.NestedContentPreValueAttribute">
+            <summary>
+            TODO: Add xml comment
+            </summary>
         </member>
         <member name="M:TypeCast.Attributes.MediaPickerPropertyAttribute.#ctor(System.String,System.String,System.Boolean,System.String,System.Int32,System.Boolean,System.String)">
             <summary>
@@ -487,6 +485,13 @@
         <member name="M:TypeCast.Attributes.PreValueAttribute.#ctor(System.String,System.String)">
             <summary>
             Specifies a string prevalue to apply to a data type
+            </summary>
+            <param name="alias"> The alias of the prevalue</param>
+            <param name="value"> The value of the prevalue</param>
+        </member>
+        <member name="M:TypeCast.Attributes.PreValueAttribute.#ctor(System.String,System.Object)">
+            <summary>
+            Specifies an object prevalue to apply to a data type
             </summary>
             <param name="alias"> The alias of the prevalue</param>
             <param name="value"> The value of the prevalue</param>
@@ -1099,11 +1104,6 @@
             <summary>
             Checks whether a property exists and adds if if it does not. The data type, alias, description and mandatory flag are update for existing properties, but not persisted.
             Callers should persist the value.
-            </summary>
-        </member>
-        <member name="T:TypeCast.Core.Modules.TemplateModule">
-            <summary>
-            NOTE / TODO: PARTIAL TEMPLATE CREATION SHOULD NOT BE IN HERE AT ALL
             </summary>
         </member>
         <member name="M:TypeCast.Core.Modules.TemplateModule.RegisterTemplates(System.Type)">
@@ -1795,6 +1795,16 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="T:TypeCast.DataTypes.BuiltIn.NestedContent">
+            <summary>
+            Nested Content Built-in Umbraco DocumentType
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContent.Items">
+            <summary>
+            Returns the a collection of documents
+            </summary>
+        </member>
         <member name="P:TypeCast.DataTypes.BuiltIn.NestedContent.Count">
             <summary>
             Returns the size of the collection
@@ -1859,6 +1869,31 @@
             Gets the Enumerator for the collection
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:TypeCast.DataTypes.BuiltIn.NestedContentItem">
+            <summary>
+            Nested Content Item Data Model used for serialising/ deserialising nested content values for pesistance.
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContentItem.Key">
+            <summary>
+            Unique identifier for nested content item
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContentItem.Name">
+            <summary>
+            Name of nested content item (format specified by template prevalue)
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContentItem.NcContentTypeAlias">
+            <summary>
+            The nested content items DocumentType alias
+            </summary>
+        </member>
+        <member name="P:TypeCast.DataTypes.BuiltIn.NestedContentItem.Value">
+            <summary>
+            The nested Document value
+            </summary>
         </member>
         <member name="M:TypeCast.DataTypes.BuiltIn.ListView_Media.Initialise(System.String)">
             <summary>
@@ -2002,12 +2037,12 @@
             Serialises the instance to the db value
             </summary>
         </member>
-        <member name="M:TypeCast.DataTypes.BuiltIn.TrueFalse.Initialise(System.Int32)">
+        <member name="M:TypeCast.DataTypes.BuiltIn.Checkbox.Initialise(System.Int32)">
             <summary>
             Initialises the instance from the db value
             </summary>
         </member>
-        <member name="M:TypeCast.DataTypes.BuiltIn.TrueFalse.Serialise">
+        <member name="M:TypeCast.DataTypes.BuiltIn.Checkbox.Serialise">
             <summary>
             Serialises the instance to the db value
             </summary>

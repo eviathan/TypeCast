@@ -53,7 +53,7 @@ namespace TypeCast.Attributes.DataTypes.PreValues
 
         public string TabAlias { get; set; }
 
-        public NestedContentPreValueAttribute(Type[] contentTypes, int minItems = 0, int maxItems = 0, bool confirmDeletes = false, bool showIcons = false, bool hideLabel = false, string tabAlias = null)
+        public NestedContentPreValueAttribute(Type[] contentTypes, int minItems = 0, int maxItems = 0, bool confirmDeletes = false, bool showIcons = true, bool hideLabel = false, string tabAlias = null)
         {
             if (!contentTypes.Any()) throw new ArgumentOutOfRangeException($"{nameof(contentTypes)} argument array needs to have at least one type.");
 
@@ -87,7 +87,7 @@ namespace TypeCast.Attributes.DataTypes.PreValues
             var nestedContentType = new NestedContentType();
             var name = type.Name;
 
-            nestedContentType.Alias = Char.ToLowerInvariant(name[0]) + name.Substring(1);
+            nestedContentType.Alias = char.ToLowerInvariant(name[0]) + name.Substring(1);
             nestedContentType.NameTemplate = "{{$index}} - {{ pickerAlias | ncNodeName }}";
             nestedContentType.TabAlias = TabAlias;
             nestedContentType.Type = type;

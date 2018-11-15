@@ -16,9 +16,6 @@ using TypeCast.Exceptions;
 
 namespace TypeCast.Core.Modules
 {
-    /// <summary>
-    /// NOTE / TODO: PARTIAL TEMPLATE CREATION SHOULD NOT BE IN HERE AT ALL
-    /// </summary>
     public class TemplateModule : ITemplateModule
     {
         private IDocumentTypeModule _documentTypeModule;

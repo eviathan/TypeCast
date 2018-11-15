@@ -14,9 +14,11 @@ using Umbraco.Core.Services;
 using TypeCast.Extensions;
 using TypeCast.ContentTypes.DocumentTypes;
 using TypeCast.DataTypes.BuiltIn;
+using Umbraco.Core.Logging;
 
 namespace TypeCast.Converters
 {
+    // NOTE: DOOES THIS HIT THE DATABASE BECAUSE IT SHOULDNT
     /// <summary>
     /// Serialises and Deserialises Nested Content to TypeCast POCOs
     /// </summary>
@@ -24,15 +26,20 @@ namespace TypeCast.Converters
     {
         public override bool CanConvert(Type objectType)
         {
-            throw new NotImplementedException();
+            return objectType.Equals(typeof(NestedContentItem));
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JObject jsonObject = JObject.Load(reader);
             var properties = jsonObject.Properties().ToList();
-            Dictionary<string, object> contentProperties = properties.Where(x => !new string[] { }.Contains(x.Name)).ToDictionary(x => x.Name, x => ((JValue)x.Value).Value);
-            var contentTypeAlias = contentProperties["ncContentTypeAlias"].ToString(); // TODO: Nullcheck make pretty
+
+            Dictionary<string, object> contentProperties = properties.Where(x => !new string[] { }
+                                                                     .Contains(x.Name))
+                                                                     .ToDictionary(x => x.Name, x => ((JValue)x.Value)
+                                                                     .Value);
+
+            var contentTypeAlias = contentProperties["ncContentTypeAlias"].ToString();
 
          
             // Create an empty content with type derived from contentTypeAlias
@@ -47,12 +54,11 @@ namespace TypeCast.Converters
                 }
                 else
                 {
-                    // TODO: Log 
+                    LogHelper.Warn(typeof(NestedContentJsonConverter), $"Could not find property with alias {property.Name}");
                 }
             }
 
-            // TODO: Convert to codefirst POCO
-            var typedContent = content.ConvertToModel() as DocumentTypeBase; // NOTE: WE NEED THE TYPE HERE!!!!!
+            var typedContent = content.ConvertToModel() as DocumentTypeBase;
 
             // Return Codefirst POCO            
             return new NestedContentItem
@@ -62,26 +68,12 @@ namespace TypeCast.Converters
                 NcContentTypeAlias = contentTypeAlias,
                 Value = typedContent
             };
-
-            // NOTES:
-            // 1. GET ALL Properties on class or nested content tab classes with contenttype attributes on them that implement IUmbracoDataType<T>
-            // 1. Pass value stored in property to the Initialise method on property
-
-            // I AM OVERTHINKING THIS WE CAN PROBABLY WORK FROM THE IPUBLISHED CONTENT PROPERTY VALUES
-
-
-
-            //ContentTypeRegistration docType;
-            //if (_contentTypeModule.TryGetContentType(content.DocumentTypeAlias, out docType))
-            //{
-            //    MethodInfo convertToModel = GetConvertToModelMethod(docType.ClrType);
-            //    return convertToModel.Invoke(this, new object[] { content, parentContext });
-            //}
-
-            //var umbHelper = new UmbracoHelper(UmbracoContext.Current);
-            //umbHelper.type
         }
 
+        // TODO: Implement this
+        // The json data structure is somewhat denoramlised which makes this a little less simple than a straight
+        // serialisation using the built in serialisation method.
+        // Look in the db but the document properties are stored on the top level object with the property naming convention being "tabName_propertyName"
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();

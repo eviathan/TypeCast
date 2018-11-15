@@ -52,9 +52,8 @@ namespace System.Web.Mvc.Html
             {
                 if (model == null) continue;
 
-                var partialViewName = model.NcContentTypeAlias;          
-                // TODO: TECHDEBT THIS IS YUCKY!!!!!!!!!
-                mvcHtmlStrings.Add(htmlHelper.Partial("Partials/NestedContent/" + partialViewName, model.Value, htmlHelper.ViewData));
+                var partialViewName = model.NcContentTypeAlias;    
+                mvcHtmlStrings.Add(htmlHelper.Partial(partialViewName, model.Value, htmlHelper.ViewData));
             }    
 
             return Concat(mvcHtmlStrings);

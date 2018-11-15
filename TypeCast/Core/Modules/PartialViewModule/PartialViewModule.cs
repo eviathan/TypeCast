@@ -63,9 +63,9 @@ namespace TypeCast.Core.Modules.PartialViewModule
                         {
                             var content = $"@model {attribute.DecoratedTypeFullName}{Environment.NewLine}{Environment.NewLine}";
                             partialView.Content = content;
-                        }
+                        } 
 
-                        _fileService.CreatePartialView(partialView);
+                        _fileService.SavePartialView(partialView);
                     }
                 }                
             }
